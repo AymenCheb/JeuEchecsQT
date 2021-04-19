@@ -58,27 +58,45 @@
     <ClCompile Include="..\projetFinal\projetFinal\Tour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cavalier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Piece.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Echiquier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Roi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\projetFinal\projetFinal\Cavalier.h">
+    <ClInclude Include="Piece.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\projetFinal\projetFinal\Echiquier.h">
+    <ClInclude Include="Cavalier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\projetFinal\projetFinal\Equipe.h">
+    <ClInclude Include="Tour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\projetFinal\projetFinal\Piece.h">
+    <ClInclude Include="Roi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\projetFinal\projetFinal\Roi.h">
+    <ClInclude Include="Equipe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\projetFinal\projetFinal\Tests.h">
+    <ClInclude Include="Echiquier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\projetFinal\projetFinal\Tour.h">
+    <ClInclude Include="Tests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

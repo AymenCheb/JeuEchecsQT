@@ -1,5 +1,17 @@
 
 #include <QApplication>
+#include <utility>
+#include <string>
+#include <iostream>
+#include <memory>
+
+#include "Piece.h"
+#include "Roi.h"
+#include "Cavalier.h"
+#include "Tour.h"
+#include "Equipe.h"
+#include "Echiquier.h"
+#include "Tests.h"
 
 #if __has_include("bibliotheque_cours.hpp")
 #include "bibliotheque_cours.hpp"
