@@ -111,13 +111,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\projetFinal\projetFinal\Cavalier.cpp" />
-    <ClCompile Include="..\projetFinal\projetFinal\Echiquier.cpp" />
-    <ClCompile Include="..\projetFinal\projetFinal\Equipe.cpp" />
-    <ClCompile Include="..\projetFinal\projetFinal\Piece.cpp" />
-    <ClCompile Include="..\projetFinal\projetFinal\Roi.cpp" />
-    <ClCompile Include="..\projetFinal\projetFinal\Tests.cpp" />
-    <ClCompile Include="..\projetFinal\projetFinal\Tour.cpp" />
     <ClCompile Include="bibliotheque_cours\bibliotheque_cours.cpp" />
     <ClCompile Include="bibliotheque_cours\verification_allocation.cpp" />
     <ClCompile Include="Cavalier.cpp" />
