@@ -115,6 +115,7 @@
     <ClCompile Include="bibliotheque_cours\verification_allocation.cpp" />
     <ClCompile Include="Cavalier.cpp" />
     <ClCompile Include="Echiquier.cpp" />
+    <ClCompile Include="EchiquierWindow.cpp" />
     <ClCompile Include="Equipe.cpp" />
     <ClCompile Include="googletest\src\gtest-all.cc" />
     <ClCompile Include="main.cpp" />
@@ -126,7 +127,11 @@
   <ItemGroup>
     <ClInclude Include="Cavalier.h" />
     <ClInclude Include="Echiquier.h" />
+    <QtMoc Include="EchiquierGraphique.h" />
+    <QtMoc Include="EchiquierWindow.h" />
     <ClInclude Include="Equipe.h" />
+    <ClInclude Include="interfaceMediateur.h" />
+    <ClInclude Include="Mediateur.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="Roi.h" />
     <ClInclude Include="Tests.h" />

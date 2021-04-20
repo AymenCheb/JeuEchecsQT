@@ -1,4 +1,5 @@
-
+#include "EchiquierWindow.h"
+#include "EchiquierGraphique.h"
 #include <QApplication>
 #include <utility>
 #include <string>
@@ -43,6 +44,8 @@ int main(int argc, char *argv[])
 	bibliotheque_cours::VerifierFuitesAllocations verifierFuitesAllocations;
 	QApplication app(argc, argv);
 	initialiserBibliothequeCours(argc, argv);
-
+	
+	EchiquierWindow echiquierWindow;
+	echiquierWindow.show();
 	return app.exec();
 }

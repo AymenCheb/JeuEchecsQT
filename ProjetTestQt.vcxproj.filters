@@ -55,6 +55,9 @@
     <ClCompile Include="Roi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EchiquierWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Piece.h">
@@ -78,5 +81,19 @@
     <ClInclude Include="Tests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="interfaceMediateur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mediateur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="EchiquierGraphique.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EchiquierWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>
