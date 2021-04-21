@@ -42,6 +42,7 @@ EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 		buton->setFlat(true);
 		buton->setStyleSheet("QPushButton { background-color: transparent }");
 		groupeBoutons->addButton(buton, i);
+		vecteursCases.push_back(buton);
 		layout->addWidget(buton, indexLigne, indexColonne);
 		if (indexColonne == 7) {
 			indexLigne++;
@@ -52,11 +53,24 @@ EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 			indexColonne++;
 		}
 	}
+	modifierContenuCase(7, "T");
+	modifierContenuCase(14, "R");
+	modifierContenuCase(32, "C");
 	#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)  // Le nom du signal idClicked existe depuis Qt 5.15
 		QObject::connect(groupeBoutons, &QButtonGroup::idClicked, &echiquierGraphique_, &EchiquierGraphique::afficherCoordonnes); // ajouterChiffre prend un int, donc le ID du bouton est bon directement.
 	#else
 		QObject::connect(groupeBoutons, SIGNAL(buttonClicked(int)), &calc_, SLOT(ajouterChiffre(int)));
 	#endif
+}
+
+void EchiquierWindow::modifierContenuCase(int id, string typePiece) {
+	
+	vecteursCases[id]->setText("");
+	std::string nomFichier = typePiece + ".png";
+	QPixmap pixmap(QString::fromStdString(nomFichier));
+	QIcon ButtonIcon(pixmap);
+	vecteursCases[id]->setIcon(ButtonIcon);
+	vecteursCases[id]->setIconSize(QSize(60, 60));
 }
 
 void EchiquierWindow::paintEvent(QPaintEvent* ev) {
