@@ -24,6 +24,7 @@ QPushButton* EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
 	return bouton;
 }
 
+
 EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 	auto widgetPrincipal = new QWidget(this);
 	auto layoutPrincipal = new QVBoxLayout(widgetPrincipal);

@@ -120,6 +120,7 @@
     <ClCompile Include="Equipe.cpp" />
     <ClCompile Include="googletest\src\gtest-all.cc" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mediateur.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="Roi.cpp" />
     <ClCompile Include="TestCalc.cpp" />

@@ -44,8 +44,14 @@ int main(int argc, char *argv[])
 	bibliotheque_cours::VerifierFuitesAllocations verifierFuitesAllocations;
 	QApplication app(argc, argv);
 	initialiserBibliothequeCours(argc, argv);
-	
+	Echiquier echiquier;
+	Tour nouvellePiece("T", "Noir");
+	shared_ptr<Tour> pointeurTour = make_shared<Tour>(nouvellePiece);
+	pair<int, int> crd(0, 0);
+	echiquier.modifierCase(crd, &pointeurTour);
+	echiquier.afficherEchiquier();
 	EchiquierWindow echiquierWindow;
+	echiquierWindow.lierEchiquier(&echiquier);
 	echiquierWindow.show();
 	return app.exec();
 }

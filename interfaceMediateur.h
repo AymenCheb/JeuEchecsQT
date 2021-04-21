@@ -3,5 +3,5 @@
 
 // Interface pour 
 class Mediateur {
-	virtual void notifierEchiquier(Echiquier& echiquier, std::string evenement);
+	virtual void notifierEchiquier(Echiquier& echiquier, std::string evenement) = 0;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "EchiquierGraphique.h"
+#include "interfaceMediateur.h"
 #pragma warning(push, 0) // Sinon Qt fait des avertissements à /W4.
 #include <QMainWindow>
 #include <QPushButton>
@@ -13,12 +14,12 @@ public:
 	EchiquierWindow(QWidget* parent = nullptr);
 	~EchiquierWindow() override = default;
 	virtual void paintEvent(QPaintEvent* event);
+	void lierEchiquier(Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
 public slots:
 
 private:
 	template <typename T = decltype(nullptr)>
 	QPushButton* nouveauBouton(const QString& text, const T& slot = nullptr);
-
 	EchiquierGraphique echiquierGraphique_;
 	QLabel* affichage_;
 };

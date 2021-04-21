@@ -22,3 +22,6 @@ pair<int, int> EchiquierGraphique::traduireIDenCoordonnes(int id) {
 	return coordonnes;
 	
 };
+
+
+
