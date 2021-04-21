@@ -128,12 +128,12 @@ bool Echiquier::validerMouvement(const std::pair<int, int> coordonneesInitiales,
 void Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination) {
 	// On mémorise les pointeurs des pieces aux cases de départ et de destination
 	afficherInfosCase(coordonneesDestination);
-	memoriserPieceDepart(&tableau_[coordonneesInitiales.first][coordonneesInitiales.second]);
-	memoriserPieceDestination(&tableau_[coordonneesDestination.first][coordonneesDestination.second]);
-
+	
 	// Dans un premier temps, on vérifie que la pièce a le droit d'effectuer ce mouvement
 	if (validerMouvement(coordonneesInitiales, coordonneesDestination)) {
 		// Si le mouvement est légal, on modifie la case de destination et on vide la case de départ
+		memoriserPieceDepart(tableau_[coordonneesInitiales.first][coordonneesInitiales.second].get());
+		memoriserPieceDestination(tableau_[coordonneesDestination.first][coordonneesDestination.second].get());
 		modifierCase(coordonneesDestination, &tableau_[coordonneesInitiales.first][coordonneesInitiales.second]);
 		viderCase(coordonneesInitiales);
 		// Dans un deuxième temps, on vérifie si ce déplacement a mis le roi de la pièce en échec
