@@ -53,9 +53,11 @@ public:
 			historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
 			nPiecesMemorisees++;
 		}
-		else if(modeMemorisation)
+		else if(modeMemorisation and nPiecesMemorisees > 1)
 		{
 			nPiecesMemorisees = 0;
+			historiquePiecesDeplacees[0] = make_shared<piece>();
+			historiquePiecesDeplacees[1] = make_shared<piece>();
 			historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
 		}
 	}
