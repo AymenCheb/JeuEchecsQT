@@ -3,5 +3,5 @@
 using namespace std;
 class MediateurQT {
 public:
-	virtual void notifierWindow(pair<int, int> coordonnes, string typePiece) = 0;
+	virtual void notifierWindow(pair<int, int> coordonnes, string typePiece, string couleur) = 0;
 };
