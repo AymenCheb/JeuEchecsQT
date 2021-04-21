@@ -27,7 +27,6 @@ QPushButton* EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
 EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 	auto widgetPrincipal = new QWidget(this);
 	auto layoutPrincipal = new QVBoxLayout(widgetPrincipal);
-
 	auto layout = new QGridLayout();
 	layout->setSizeConstraint(QLayout::SetFixedSize);
 	layoutPrincipal->addLayout(layout);
