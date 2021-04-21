@@ -120,7 +120,7 @@ bool tester_bloc_verification_corruption_a(void* ptr)
 
 
 char* pointeur_octets(void* p) { return reinterpret_cast<char*>(p); }
-//const char* pointeur_octets(const void* p) { return reinterpret_cast<const char*>(p); }
+const char* pointeur_octets(const void* p) { return reinterpret_cast<const char*>(p); }
 
 // Devrait être appelé uniquement lorsqu'on sait que le bloc n'est pas corrompu (l'assertion devrait se rendre compte d'un problème, mais ça n'est pas vérifiable dans un test).
 size_t taille_allocation_selon_verification_corruption(void* ptr)

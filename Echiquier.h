@@ -11,10 +11,12 @@
 #include "Tour.h"
 #include "Equipe.h"
 
+using namespace std;
 class Echiquier {
 private:
-	std::shared_ptr<piece> pieceDepart_;
-	std::shared_ptr<piece> pieceDestination_;
+	std::shared_ptr<piece> historiquePiecesDeplacees[2];
+	int nPiecesMemorisees = 0;
+	bool modeMemorisation = true;
 	std::shared_ptr<piece> tableau_[8][8]; // Géneration d'un échiquier de 8x8 
 	Equipe equipes_[2];
 public:
@@ -45,13 +47,17 @@ public:
 	bool verifierEchec(std::pair<int,int> positionRoi);
 	bool validerMouvement(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination);
 	std::pair<int, int> trouverPiece(std::string nature, std::string couleur);
-	template <class TypePiece>
-	void memoriserPieceDepart(TypePiece* ptrPieceDepart) {
-		pieceDepart_.reset(ptrPieceDepart);
-	}
-	template <class TypePiece>
-	void memoriserPieceDestination(TypePiece* ptrPieceDestination) {
-		pieceDestination_.reset(ptrPieceDestination);
+	void memoriserPiece(shared_ptr<piece>& pieceDeplacee) {
+		if (nPiecesMemorisees <= 1 and modeMemorisation)
+		{
+			historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
+			nPiecesMemorisees++;
+		}
+		else if(modeMemorisation)
+		{
+			nPiecesMemorisees = 0;
+			historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
+		}
 	}
 
 };
