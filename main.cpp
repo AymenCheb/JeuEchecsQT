@@ -13,7 +13,7 @@
 #include "Equipe.h"
 #include "Echiquier.h"
 #include "Tests.h"
-
+#include "MediateurModeleVue.h"
 #if __has_include("bibliotheque_cours.hpp")
 #include "bibliotheque_cours.hpp"
 #define BIBLIOTHEQUE_COURS_INCLUS
@@ -63,6 +63,8 @@ int main(int argc, char *argv[])
 
 	echiquier.afficherEchiquier();
 	EchiquierWindow echiquierWindow;
+	MediateurModeleVue mediateurModeleVue(&echiquierWindow);
+	echiquier.lierMediateur(&mediateurModeleVue);
 	echiquierWindow.lierEchiquier(&echiquier);
 	echiquierWindow.show();
 	return app.exec();

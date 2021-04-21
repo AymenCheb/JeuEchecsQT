@@ -10,6 +10,7 @@
 #include "Cavalier.h"
 #include "Tour.h"
 #include "Equipe.h"
+#include "interfaceMediateurQT.h"
 
 using namespace std;
 class Echiquier {
@@ -17,6 +18,7 @@ private:
 	std::shared_ptr<piece> historiquePiecesDeplacees[2];
 	int nPiecesMemorisees = 0;
 	bool modeMemorisation = true;
+	MediateurQT* mediateur_;
 	std::shared_ptr<piece> tableau_[8][8]; // Géneration d'un échiquier de 8x8 
 	Equipe equipes_[2];
 public:
@@ -56,11 +58,13 @@ public:
 		else if(modeMemorisation and nPiecesMemorisees > 1)
 		{
 			nPiecesMemorisees = 0;
-			historiquePiecesDeplacees[0] = make_shared<piece>();
-			historiquePiecesDeplacees[1] = make_shared<piece>();
 			historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
 		}
 	}
+	void lierMediateur(MediateurQT* mediateur) { mediateur_ = mediateur; };
+	void miseAjourGraphique(pair<int, int> coordonnesCase) { 
+		mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_);
+	};
 
 };
 

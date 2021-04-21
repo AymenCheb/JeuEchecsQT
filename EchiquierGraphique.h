@@ -10,7 +10,7 @@ class EchiquierGraphique : public QObject {
 public:
 	EchiquierGraphique() = default;
 	pair<int, int> traduireIDenCoordonnes(int id);
-	MediateurModeleVue mediateur;
+	MediateurVueModele mediateur;
 public slots:
 	/*pair<int, int> obtenirCoordonnes();*/
 	/*void changerTypeAffiche(string nouveauType);

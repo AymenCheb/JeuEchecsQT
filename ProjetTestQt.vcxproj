@@ -134,7 +134,9 @@
     <QtMoc Include="EchiquierWindow.h" />
     <ClInclude Include="Equipe.h" />
     <ClInclude Include="interfaceMediateur.h" />
+    <ClInclude Include="interfaceMediateurQT.h" />
     <ClInclude Include="Mediateur.h" />
+    <ClInclude Include="MediateurModeleVue.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="Roi.h" />
     <ClInclude Include="Tests.h" />

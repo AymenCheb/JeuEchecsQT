@@ -96,6 +96,12 @@
     <ClInclude Include="Mediateur.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MediateurModeleVue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaceMediateurQT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EchiquierGraphique.h">

@@ -1,7 +1,7 @@
 #pragma once
 #include "interfaceMediateur.h"
 
-class MediateurModeleVue: public Mediateur {
+class MediateurVueModele: public Mediateur {
 private:
 	std::pair<int, int> memoireAppuis[2];
 	Echiquier* echiquier_;

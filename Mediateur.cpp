@@ -2,7 +2,7 @@
 #include "Mediateur.h"
 
 
-void MediateurModeleVue::interpreterAppui(std::pair<int, int> coordonnesQT) {
+void MediateurVueModele::interpreterAppui(std::pair<int, int> coordonnesQT) {
 	if (nAppuisEnregistres_ <= 1)
 	{
 		memoireAppuis[nAppuisEnregistres_] = coordonnesQT;

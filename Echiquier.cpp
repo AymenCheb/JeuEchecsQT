@@ -145,6 +145,11 @@ void Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, co
 			
 			cout << "Ce mouvement mettrait le roi de la " << historiquePiecesDeplacees[0].get()->nature_ << " en echec! " << endl;
 		}
+		else
+		{
+			miseAjourGraphique(coordonneesInitiales);
+			miseAjourGraphique(coordonneesDestination);
+		}
 	}
 	else cout << "Mouvement impossible " << endl;
 }
