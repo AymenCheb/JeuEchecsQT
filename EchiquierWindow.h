@@ -12,7 +12,7 @@ class EchiquierWindow : public QMainWindow {
 public:
 	EchiquierWindow(QWidget* parent = nullptr);
 	~EchiquierWindow() override = default;
-
+	virtual void paintEvent(QPaintEvent* event);
 public slots:
 
 private:
