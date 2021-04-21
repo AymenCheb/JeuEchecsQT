@@ -140,6 +140,11 @@
     <ClInclude Include="Tests.h" />
     <ClInclude Include="Tour.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="C.png" />
+    <Image Include="R.png" />
+    <Image Include="T.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />

@@ -105,4 +105,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="C.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="R.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="T.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

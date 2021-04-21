@@ -15,6 +15,7 @@ public:
 	~EchiquierWindow() override = default;
 	virtual void paintEvent(QPaintEvent* event);
 	void lierEchiquier(Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
+	void modifierContenuCase(int id, string typePiece);
 public slots:
 
 private:
@@ -22,4 +23,5 @@ private:
 	QPushButton* nouveauBouton(const QString& text, const T& slot = nullptr);
 	EchiquierGraphique echiquierGraphique_;
 	QLabel* affichage_;
+	QVector<QPushButton*> vecteursCases;
 };
