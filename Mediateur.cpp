@@ -12,6 +12,7 @@ void MediateurModeleVue::interpreterAppui(std::pair<int, int> coordonnesQT) {
 	{
 		echiquier_->deplacerPiece(memoireAppuis[0], memoireAppuis[1]);
 		echiquier_->afficherEchiquier();
+		nAppuisEnregistres_ = 0;
 	}
  };
 
