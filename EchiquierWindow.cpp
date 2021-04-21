@@ -53,6 +53,9 @@ EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 			indexColonne++;
 		}
 	}
+	modifierContenuCase(0, "R", "Noir");
+	modifierContenuCase(1, "T", "Noir");
+	modifierContenuCase(2, "T", "Blanc");
 	#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)  // Le nom du signal idClicked existe depuis Qt 5.15
 		QObject::connect(groupeBoutons, &QButtonGroup::idClicked, &echiquierGraphique_, &EchiquierGraphique::afficherCoordonnes); // ajouterChiffre prend un int, donc le ID du bouton est bon directement.
 	#else
