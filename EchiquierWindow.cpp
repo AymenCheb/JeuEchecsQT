@@ -51,6 +51,11 @@ EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 			indexColonne++;
 		}
 	}
+	#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)  // Le nom du signal idClicked existe depuis Qt 5.15
+		QObject::connect(groupeBoutons, &QButtonGroup::idClicked, &echiquierGraphique_, &EchiquierGraphique::afficherCoordonnes); // ajouterChiffre prend un int, donc le ID du bouton est bon directement.
+	#else
+		QObject::connect(groupeBoutons, SIGNAL(buttonClicked(int)), &calc_, SLOT(ajouterChiffre(int)));
+	#endif
 }
 
 void EchiquierWindow::paintEvent(QPaintEvent* ev) {
