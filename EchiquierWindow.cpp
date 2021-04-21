@@ -60,10 +60,10 @@ EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 	#endif
 }
 
-void EchiquierWindow::modifierContenuCase(int id, string typePiece) {
+void EchiquierWindow::modifierContenuCase(int id, string typePiece, string couleurEquipe) {
 	
 	vecteursCases[id]->setText("");
-	std::string nomFichier = typePiece + ".png";
+	std::string nomFichier = typePiece + couleurEquipe + ".png";
 	QPixmap pixmap(QString::fromStdString(nomFichier));
 	QIcon ButtonIcon(pixmap);
 	vecteursCases[id]->setIcon(ButtonIcon);

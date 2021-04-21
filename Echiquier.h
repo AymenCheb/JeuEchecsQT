@@ -63,7 +63,8 @@ public:
 	}
 	void lierMediateur(MediateurQT* mediateur) { mediateur_ = mediateur; };
 	void miseAjourGraphique(pair<int, int> coordonnesCase) { 
-		mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_);
+		mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_,
+			tableau_[coordonnesCase.first][coordonnesCase.second].get()->couleur_);
 	};
 
 };

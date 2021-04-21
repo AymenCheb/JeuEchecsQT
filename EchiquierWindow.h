@@ -15,7 +15,7 @@ public:
 	~EchiquierWindow() override = default;
 	virtual void paintEvent(QPaintEvent* event);
 	void lierEchiquier(Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
-	void modifierContenuCase(int id, string typePiece);
+	void modifierContenuCase(int id, string typePiece, string couleurEquipe);
 public slots:
 
 private:

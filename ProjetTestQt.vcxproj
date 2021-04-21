@@ -143,9 +143,10 @@
     <ClInclude Include="Tour.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="C.png" />
-    <Image Include="R.png" />
-    <Image Include="T.png" />
+    <Image Include="CNoir.png" />
+    <Image Include="RNoir.png" />
+    <Image Include="TBlanc.png" />
+    <Image Include="TNoir.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

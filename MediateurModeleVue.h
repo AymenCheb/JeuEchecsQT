@@ -8,5 +8,7 @@ private:
 public:
 	MediateurModeleVue(EchiquierWindow* echiquierWindow) { echiquierWindow_ = echiquierWindow; };
 	int transformerCordonnesID(pair<int, int> cordonnes) { return (cordonnes.second + (8 * cordonnes.first)); };
-	void notifierWindow(pair<int, int> coordonnes, string typePiece) override { echiquierWindow_->modifierContenuCase(transformerCordonnesID(coordonnes), typePiece); };
+	void notifierWindow(pair<int, int> coordonnes, string typePiece, string couleur) override { 
+		echiquierWindow_->modifierContenuCase(transformerCordonnesID(coordonnes), typePiece, couleur); 
+	};
 };
