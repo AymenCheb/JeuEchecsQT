@@ -49,24 +49,10 @@ public:
 	bool verifierEchec(std::pair<int,int> positionRoi);
 	bool validerMouvement(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination);
 	std::pair<int, int> trouverPiece(std::string nature, std::string couleur);
-	void memoriserPiece(shared_ptr<piece>& pieceDeplacee) {
-		if (nPiecesMemorisees <= 1 and modeMemorisation)
-		{
-			historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
-			nPiecesMemorisees++;
-		}
-		else if(modeMemorisation and nPiecesMemorisees > 1)
-		{
-			nPiecesMemorisees = 0;
-			historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
-			nPiecesMemorisees++;
-		}
-	}
+	void memoriserPiece(shared_ptr<piece>& pieceDeplacee);
 	void lierMediateur(MediateurQT* mediateur) { mediateur_ = mediateur; };
-	void miseAjourGraphique(pair<int, int> coordonnesCase) { 
-		mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_,
-			tableau_[coordonnesCase.first][coordonnesCase.second].get()->couleur_);
-	};
+	void miseAjourGraphique(pair<int, int> coordonnesCase);
+	// Cette fonction étant générique, il faut l'implémenter au moment de sa déclaration
 	template <class TypePiece>
 	void placerPiece(pair<int, int> caseInitial, shared_ptr<TypePiece>* pieceAplacer) {
 		modifierCase(caseInitial, pieceAplacer);

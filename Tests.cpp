@@ -12,15 +12,6 @@
 #include "EchiquierWindow.h"
 using namespace std;
 
-/**
-* Programme qui implément un jeu d'échecs
-* \file   main.cpp
-* \author Chebbi Mohamed Aymen, Jaafar Hady, Panoyan Arthur
-* \date   12 avril 2021
-* Créé le 08 avril 2021
-*/
-
-
 
 void testPartie1() {
 	string sepratation = " \n --------------------------------------------------------------- \n";
@@ -171,69 +162,5 @@ void testPartie1() {
 	cout << sepratation;
 	cout << '\n';
 }
-
-void testPartie2() {
-	
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Constructeurs des differentes pieces
-//[
-
-
-
-
-// Implémentations relatives aux équipes
-//[
-
-
-//]
-
-
-
-
-//Differentes methodes de la classe Echiquier
-//[
-//Cette methode permet de modifier une case precise de l'echiquier, en passant en parametre les coordonnees de la case, ainsi que la piece que l'on souhaite placer a cette case
-
-
-//[
-/*Implementation des methodes demanderMouvement specifiques a chaque piece : cette methode retourne, en fonction de la piece, true si cette piece
-peut se deplacer de la maniere dont on souhaite le faire, ou false si le deplacement demander brise les regles de deplacement de cette piece*/
-
-
-
-
-
-
-//]
-
-//[
-/*Implementation des methodes trouverChemin specifiques a chaque piece, cette methode retourne un vector contenant
-les coordonnees des differentes cases par lesquelles une piece doit passer pour se rendre de sa case initiale jusqu'a celle
-a laquelle on souahite la deplacer*/
-
-
-
-
-
-//]
 
 

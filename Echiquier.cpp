@@ -227,3 +227,25 @@ pair<int, int> Echiquier::trouverPiece(std::string nature, std::string couleur) 
 	}
 	// Ajouter une exception pour le cas où aucun if n'est satisfait
 }
+
+// Fonction pour mémoriser une pièce 
+void Echiquier::memoriserPiece(shared_ptr<piece>& pieceDeplacee) {
+	// Si on est dans le mode mémorisation et que la mémoire n'est pas pleine, on mémorise la pièce
+	if (nPiecesMemorisees <= 1 and modeMemorisation)
+	{
+		historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
+		nPiecesMemorisees++;
+	}
+	// Si on est dans le mode mémorisation et que la mémoire est pleine, on réinitialise l'index de mémoire, puis enregistre
+	else if (modeMemorisation and nPiecesMemorisees > 1)
+	{
+		nPiecesMemorisees = 0;
+		historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
+		nPiecesMemorisees++;
+	}
+}
+// Fonction faisant appel au médiateur ModeleVue pour mettre à jour l'interface graphique
+void Echiquier::miseAjourGraphique(pair<int, int> coordonnesCase) {
+	mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_,
+		tableau_[coordonnesCase.first][coordonnesCase.second].get()->couleur_);
+};

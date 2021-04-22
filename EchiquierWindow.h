@@ -8,12 +8,14 @@
 #include <QLabel>
 #pragma pop()
 
+// Cette classe représente la fenetre graphique de l'application
 class EchiquierWindow : public QMainWindow {
 	Q_OBJECT
 public:
 	EchiquierWindow(QWidget* parent = nullptr);
 	~EchiquierWindow() override = default;
 	virtual void paintEvent(QPaintEvent* event);
+	// Cette fonction lie le mediateur de l'échiquier graphique au modèle echiquier
 	void lierEchiquier(Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
 	void modifierContenuCase(int id, string typePiece, string couleurEquipe);
 	void modifierCouleurCase(int id);

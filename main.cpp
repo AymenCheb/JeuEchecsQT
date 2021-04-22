@@ -45,6 +45,8 @@ int main(int argc, char *argv[])
 	QApplication app(argc, argv);
 	initialiserBibliothequeCours(argc, argv);
 
+	// Les lignes de codes suivantes s'occupe de créer les pièces de la partie: 
+	// Note: Les prochaines versions du projet auront une fonction pour se charger de ces étapes
 	Echiquier echiquier;
 	Roi roiNoir("R", "Noir");
 	Roi roiBlanc("R", "Blanc");
@@ -57,7 +59,8 @@ int main(int argc, char *argv[])
 	shared_ptr<Tour> pointeurTourNoir = make_shared<Tour>(tourNoir);
 	shared_ptr<Cavalier> pointeurCavalierNoir = make_shared<Cavalier>(cavalierNoir);
 	shared_ptr<Cavalier> pointeurCavalierBlanc = make_shared<Cavalier>(cavalierBlanc);
-	pair<int, int> crdRoiNoir(0, 0), crdTourNoir(0, 1), crdTourBlance(0, 2), crdRoiBlanc(0,3), crdCavalierBlanc(6,6), crdCavalierNoir(5,5);
+	// Pour l'instant, nous commencons une partie dans un scénario de fin de jeu
+	pair<int, int> crdRoiNoir(7, 6), crdTourNoir(6, 6), crdTourBlance(0, 6), crdRoiBlanc(0,7), crdCavalierBlanc(4,4), crdCavalierNoir(3,4);
 	// Test de la vérification de la mise en échecs: 
 	
 
@@ -68,7 +71,7 @@ int main(int argc, char *argv[])
 	echiquierWindow.lierEchiquier(&echiquier);
 	
 	
-
+	// On place les pièces initialisées au début une fois que la fenêtre est lancée 
 	echiquier.placerPiece(crdRoiNoir, &pointeurRoiNoir);
 	echiquier.placerPiece(crdTourBlance, &pointeurTourBlanche);
 	echiquier.placerPiece(crdTourNoir, &pointeurTourNoir);
