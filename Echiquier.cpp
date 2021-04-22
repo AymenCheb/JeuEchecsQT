@@ -88,6 +88,7 @@ void Echiquier::viderCase(const std::pair<int, int> coordonnees) {
 		break;
 	}
 	memoriserPiece(tableau_[coordonnees.first][coordonnees.second]); // Pour vider une case, on place une nouvelle piece X dans le tableau à son endroit
+	tableau_[coordonnees.first][coordonnees.second] = make_shared<piece>();
 }
 //Methode pour afficher l'echiquier dans le terminal
 void Echiquier::afficherEchiquier() {
@@ -132,16 +133,16 @@ void Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, co
 	// Dans un premier temps, on vérifie que la pièce a le droit d'effectuer ce mouvement
 	if (validerMouvement(coordonneesInitiales, coordonneesDestination)) {
 		// Si le mouvement est légal, on modifie la case de destination et on vide la case de départ
+		modeMemorisation = true;
 		modifierCase(coordonneesDestination, &tableau_[coordonneesInitiales.first][coordonneesInitiales.second]);
 		viderCase(coordonneesInitiales);
+		modeMemorisation = false;
 		 /*Dans un deuxième temps, on vérifie si ce déplacement a mis le roi de la pièce en échec*/
 		if (verifierEchec(trouverPiece("R", historiquePiecesDeplacees[1].get()->couleur_)))
 		{
 			// Si oui, on annule le déplacement
-			modeMemorisation = false;
 			modifierCase(coordonneesInitiales, &historiquePiecesDeplacees[1]);
 			modifierCase(coordonneesDestination, &historiquePiecesDeplacees[0]);
-			modeMemorisation = true;
 			
 			cout << "Ce mouvement mettrait le roi de la " << historiquePiecesDeplacees[0].get()->nature_ << " en echec! " << endl;
 		}

@@ -17,7 +17,7 @@ class Echiquier {
 private:
 	std::shared_ptr<piece> historiquePiecesDeplacees[2];
 	int nPiecesMemorisees = 0;
-	bool modeMemorisation = true;
+	bool modeMemorisation = false;
 	MediateurQT* mediateur_;
 	std::shared_ptr<piece> tableau_[8][8]; // Géneration d'un échiquier de 8x8 
 	Equipe equipes_[2];
@@ -59,6 +59,7 @@ public:
 		{
 			nPiecesMemorisees = 0;
 			historiquePiecesDeplacees[nPiecesMemorisees].swap(pieceDeplacee);
+			nPiecesMemorisees++;
 		}
 	}
 	void lierMediateur(MediateurQT* mediateur) { mediateur_ = mediateur; };
