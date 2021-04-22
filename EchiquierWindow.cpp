@@ -11,6 +11,7 @@
 #include <type_traits>
 #include <cppitertools/range.hpp>
 #include <qpainter.h>
+#include <QLineEdit>
 using iter::range;
 
 template <typename T>
@@ -80,9 +81,17 @@ void interfaceGraphique::EchiquierWindow::modifierContenuCase(int id, string typ
 	
 }
 
+void interfaceGraphique::EchiquierWindow::modifierBordureCase(int id) {
+	vecteursCases[id]->setFlat(false);
+	vecteursCases[id]->setStyleSheet("QPushButton{ border-width: 5px; border-style: solid; border-color: green green green green; }");
+}
+
+
+
 void interfaceGraphique::EchiquierWindow::modifierCouleurCase(int id) {
 	vecteursCases[id]->setFlat(false);
 	vecteursCases[id]->setStyleSheet("QPushButton { background-color: rgb(230,83,83); }");
+
 	
 	
 }

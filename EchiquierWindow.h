@@ -22,6 +22,7 @@ namespace interfaceGraphique {
 		void modifierContenuCase(int id, string typePiece, string couleurEquipe);
 		void modifierCouleurCase(int id);
 		void couleurCaseOriginale(int id);
+		void modifierBordureCase(int id);
 	public slots:
 
 	private:
