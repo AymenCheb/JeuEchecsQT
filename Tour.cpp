@@ -6,10 +6,10 @@
 using namespace std;
 
 //Constructeur des tours
-Tour::Tour(string nature, string couleur) : piece(nature, couleur) {
+modele::Tour::Tour(string nature, string couleur) : piece(nature, couleur) {
 }
 
-bool Tour::demanderMouvement(const std::pair<int, int> depart, const pair<int, int> destination) {
+bool modele::Tour::demanderMouvement(const std::pair<int, int> depart, const pair<int, int> destination) {
 	//La tour se deplace soit horizontalement, soit verticalement, de ce fait , si ses coordonnees de depart sont (x,y), alors a l'arrivee, aux coordonnees (w,z)
 	//si le mouvement est legal, on aura alors x = w ou y = z
 	if (destination.first != depart.first && destination.second != depart.second) {
@@ -19,7 +19,7 @@ bool Tour::demanderMouvement(const std::pair<int, int> depart, const pair<int, i
 		return true;
 }
 
-vector<pair<int, int>> Tour::trouverChemin(const std::pair<int, int> depart, pair<int, int> destination) {
+vector<pair<int, int>> modele::Tour::trouverChemin(const std::pair<int, int> depart, pair<int, int> destination) {
 	vector<pair<int, int>> chemin;
 	if (depart.first != destination.first) {   //Si la tour se deplace verticalement
 		if (depart.first > destination.first) {  // Si la tour se deplace vers le haut 

@@ -5,15 +5,15 @@
 #include "Roi.h"
 #include "Exceptions.h"
 using namespace std;
-int Roi::compteurInstances_ = 0;
+int modele::Roi::compteurInstances_ = 0;
 //Constructeur des Rois
-void Roi::verifierSurplusRoi() {
+void modele::Roi::verifierSurplusRoi() {
 	if (compteurInstances_ > 2)
 	{
 		throw ErreurSurplusRoi("Il y a déjà 2 rois dans la partie ");
 	}
 }
-Roi::Roi(string nature, string couleur) : piece(nature, couleur) {
+modele::Roi::Roi(string nature, string couleur) : piece(nature, couleur) {
 	compteurInstances_++;
 	try
 	{
@@ -27,8 +27,8 @@ Roi::Roi(string nature, string couleur) : piece(nature, couleur) {
 }
 //]
 
-Roi::~Roi() { compteurInstances_--; };
-bool Roi::demanderMouvement(const std::pair<int, int> depart, const std::pair<int, int> destination) {
+modele::Roi::~Roi() { compteurInstances_--; };
+bool modele::Roi::demanderMouvement(const std::pair<int, int> depart, const std::pair<int, int> destination) {
 	/*Le roi peut se deplacer uniquement d'une cases dans toute les direction. Si il part de (x,y) et arrive a (w,z)
 	alors,  |x-w| > 1 ou si |y-z| > 1, cela signifie que le roi ne s'est pas deplacer uniquement d'une case,
 	et son mouvement est donc illegal*/
@@ -40,7 +40,7 @@ bool Roi::demanderMouvement(const std::pair<int, int> depart, const std::pair<in
 		return true;
 }
 
-std::vector<std::pair<int, int>> Roi::trouverChemin(const std::pair<int, int> depart, const std::pair<int, int> destination) {
+std::vector<std::pair<int, int>> modele::Roi::trouverChemin(const std::pair<int, int> depart, const std::pair<int, int> destination) {
 	//Le roi se deplace uniquement d'une case, son chemin de deplacement est donc uniquement composer de sa case d'arrivee
 	vector<pair<int, int>> chemin;
 	chemin.push_back(destination);
