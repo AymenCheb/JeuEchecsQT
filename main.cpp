@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 	
 
 	echiquier.afficherEchiquier();
-	EchiquierWindow echiquierWindow;
+	interfaceGraphique::EchiquierWindow echiquierWindow;
 	MediateurModeleVue mediateurModeleVue(&echiquierWindow);
 	echiquier.lierMediateur(&mediateurModeleVue);
 	echiquierWindow.lierEchiquier(&echiquier);

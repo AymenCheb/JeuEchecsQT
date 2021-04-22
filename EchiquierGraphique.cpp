@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-pair<int, int> EchiquierGraphique::traduireIDenCoordonnes(int id) {
+pair<int, int> interfaceGraphique::EchiquierGraphique::traduireIDenCoordonnes(int id) {
 	int indexColonne = 0;
 	int indexLigne = 0;
 	for (int i = 0; (8 * indexLigne) + indexColonne != id; i++)
