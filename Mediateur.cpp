@@ -10,8 +10,11 @@ void MediateurVueModele::interpreterAppui(std::pair<int, int> coordonnesQT) {
 	}
 	if (nAppuisEnregistres_ > 1)
 	{
-		echiquier_->deplacerPiece(memoireAppuis[0], memoireAppuis[1]);
-		echiquier_->afficherEchiquier();
+		if (memoireAppuis[0] != memoireAppuis[1])
+		{
+			echiquier_->deplacerPiece(memoireAppuis[0], memoireAppuis[1]);
+			echiquier_->afficherEchiquier();
+		}
 		nAppuisEnregistres_ = 0;
 	}
  };
