@@ -4,6 +4,7 @@
 #include "Equipe.h"
 using namespace std;
 
+// Cette classe garde en mémoire les coordonnées de ses membres d'équipe
 Equipe::Equipe(const std::string nom, const std::string couleur) {
 	nom_ = nom;
 	couleur_ = couleur;
@@ -24,6 +25,7 @@ void Equipe::retirerMembre(const std::pair<int, int> coordonneesMembre) {
 		}
 	}
 };
+// Cette fonction verifie si une case appartient à l'équipe
 bool Equipe::verifierPresenceMembre(std::pair<int, int> coordonnees) {
 	for (int i = 0; i < nMembres_; i++)
 	{
