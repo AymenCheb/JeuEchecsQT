@@ -16,7 +16,7 @@ public:
 	~EchiquierWindow() override = default;
 	virtual void paintEvent(QPaintEvent* event);
 	// Cette fonction lie le mediateur de l'échiquier graphique au modèle echiquier
-	void lierEchiquier(Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
+	void lierEchiquier(modele::Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
 	void modifierContenuCase(int id, string typePiece, string couleurEquipe);
 	void modifierCouleurCase(int id);
 	void couleurCaseOriginale(int id);
