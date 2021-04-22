@@ -15,7 +15,7 @@ using iter::range;
 
 template <typename T>
 // Fonction pour cr�er un nouveau bouton
-QPushButton* EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
+QPushButton* interfaceGraphique::EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
 {
 	auto bouton = new QPushButton(this);
 	bouton->setFixedSize(95, 95);
@@ -25,7 +25,7 @@ QPushButton* EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
 }
 
 // Constructeur par d�faut de notre EchiquierWindow
-EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
+interfaceGraphique::EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 	auto widgetPrincipal = new QWidget(this);
 	auto layoutPrincipal = new QVBoxLayout(widgetPrincipal);
 	// Layout contenant les boutons. On utilise grid pour faciliter le placement
@@ -69,7 +69,7 @@ EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 }
 
 // Fonction pour modifier l'image affich�e par un bouton
-void EchiquierWindow::modifierContenuCase(int id, string typePiece, string couleurEquipe) {
+void interfaceGraphique::EchiquierWindow::modifierContenuCase(int id, string typePiece, string couleurEquipe) {
 	
 	vecteursCases[id]->setText("");
 	std::string nomFichier = typePiece + couleurEquipe + ".png";
@@ -80,18 +80,18 @@ void EchiquierWindow::modifierContenuCase(int id, string typePiece, string coule
 	
 }
 
-void EchiquierWindow::modifierCouleurCase(int id) {
+void interfaceGraphique::EchiquierWindow::modifierCouleurCase(int id) {
 	vecteursCases[id]->setFlat(false);
 	vecteursCases[id]->setStyleSheet("QPushButton { background-color: rgb(230,83,83); }");
 	
 	
 }
-void EchiquierWindow::couleurCaseOriginale(int id) {
+void interfaceGraphique::EchiquierWindow::couleurCaseOriginale(int id) {
 	
 	vecteursCases[id]->setFlat(true);
 	vecteursCases[id]->setStyleSheet("QPushButton { background-color: transparent }");
 }
-void EchiquierWindow::paintEvent(QPaintEvent* ev) {
+void interfaceGraphique::EchiquierWindow::paintEvent(QPaintEvent* ev) {
 	QPainter painter(this);
 	    
 	    QPen pen;
