@@ -65,14 +65,7 @@ int main(int argc, char *argv[])
 	echiquier.lierMediateur(&mediateurModeleVue);
 	echiquierWindow.lierEchiquier(&echiquier);
 	
-	/*echiquier.modifierCase(crdRoiBlanc, &pointeurRoiBlanc);
-	echiquier.modifierCase(crdRoiNoir, &pointeurRoiNoir);
-	echiquier.modifierCase(crdTourBlance, &pointeurTourBlanche);
-	echiquier.modifierCase(crdTourNoir, &pointeurTourNoir);
-	echiquier.miseAjourGraphique(crdRoiBlanc);
-	echiquier.miseAjourGraphique(crdRoiNoir);
-	echiquier.miseAjourGraphique(crdTourBlance);
-	echiquier.miseAjourGraphique(crdTourNoir);*/
+	
 
 	echiquier.placerPiece(crdRoiNoir, &pointeurRoiNoir);
 	echiquier.placerPiece(crdTourBlance, &pointeurTourBlanche);

@@ -212,10 +212,3 @@ pair<int, int> Echiquier::trouverPiece(std::string nature, std::string couleur) 
 	}
 	// Ajouter une exception pour le cas où aucun if n'est satisfait
 }
-//
-//void Echiquier::placerPiece(pair<int, int> caseInitial, piece* pieceAplacer) {
-//	shared_ptr<piece> nouveauPointeur;
-//	nouveauPointeur.reset(pieceAplacer);
-//	modifierCase(caseInitial, &nouveauPointeur);
-//	miseAjourGraphique(caseInitial);
-//}
