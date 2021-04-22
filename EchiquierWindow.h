@@ -9,23 +9,26 @@
 #pragma pop()
 
 // Cette classe représente la fenetre graphique de l'application
-class EchiquierWindow : public QMainWindow {
-	Q_OBJECT
-public:
-	EchiquierWindow(QWidget* parent = nullptr);
-	~EchiquierWindow() override = default;
-	virtual void paintEvent(QPaintEvent* event);
-	// Cette fonction lie le mediateur de l'échiquier graphique au modèle echiquier
-	void lierEchiquier(modele::Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
-	void modifierContenuCase(int id, string typePiece, string couleurEquipe);
-	void modifierCouleurCase(int id);
-	void couleurCaseOriginale(int id);
-public slots:
+namespace interfaceGraphique {
 
-private:
-	template <typename T = decltype(nullptr)>
-	QPushButton* nouveauBouton(const QString& text, const T& slot = nullptr);
-	EchiquierGraphique echiquierGraphique_;
-	QLabel* affichage_;
-	QVector<QPushButton*> vecteursCases;
-};
+	class EchiquierWindow : public QMainWindow {
+		Q_OBJECT
+	public:
+		EchiquierWindow(QWidget* parent = nullptr);
+		~EchiquierWindow() override = default;
+		virtual void paintEvent(QPaintEvent* event);
+		// Cette fonction lie le mediateur de l'échiquier graphique au modèle echiquier
+		void lierEchiquier(modele::Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
+		void modifierContenuCase(int id, string typePiece, string couleurEquipe);
+		void modifierCouleurCase(int id);
+		void couleurCaseOriginale(int id);
+	public slots:
+
+	private:
+		template <typename T = decltype(nullptr)>
+		QPushButton* nouveauBouton(const QString& text, const T& slot = nullptr);
+		EchiquierGraphique echiquierGraphique_;
+		QLabel* affichage_;
+		QVector<QPushButton*> vecteursCases;
+	};
+}

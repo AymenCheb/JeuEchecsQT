@@ -6,17 +6,20 @@
 #include "Mediateur.h"
 using namespace std;
 // Cette classe intéragit avec le médiateur vue-modèle
-class EchiquierGraphique : public QObject {
-	Q_OBJECT
-public:
-	EchiquierGraphique() = default;
-	pair<int, int> traduireIDenCoordonnes(int id);
-	MediateurVueModele mediateur;
-public slots:
-	void traiterAppuiBouton(int id) { mediateur.interpreterAppui(traduireIDenCoordonnes(id)); };
-signals:
-private:
-	string typePiece_;
+namespace interfaceGraphique {
+
+	class EchiquierGraphique : public QObject {
+		Q_OBJECT
+	public:
+		EchiquierGraphique() = default;
+		pair<int, int> traduireIDenCoordonnes(int id);
+		MediateurVueModele mediateur;
+	public slots:
+		void traiterAppuiBouton(int id) { mediateur.interpreterAppui(traduireIDenCoordonnes(id)); };
+	signals:
+	private:
+		string typePiece_;
 	
-	bool estVide_ = true;
-};
+		bool estVide_ = true;
+	};
+}
