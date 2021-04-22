@@ -14,6 +14,7 @@
 using iter::range;
 
 template <typename T>
+// Fonction pour créer un nouveau bouton
 QPushButton* EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
 {
 	auto bouton = new QPushButton(this);
@@ -23,17 +24,22 @@ QPushButton* EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
 	return bouton;
 }
 
-
+// Constructeur par défaut de notre EchiquierWindow
 EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 	auto widgetPrincipal = new QWidget(this);
 	auto layoutPrincipal = new QVBoxLayout(widgetPrincipal);
+	// Layout contenant les boutons. On utilise grid pour faciliter le placement
 	auto layout = new QGridLayout();
+	// Permet de s'assurer que notre layout ne prenne pas plus d'espace que nécessaire
 	layout->setSizeConstraint(QLayout::SetFixedSize);
 	layoutPrincipal->addLayout(layout);
+	// Permet de s'assurer que notre layout ne prenne pas plus d'espace que nécessaire
 	layoutPrincipal->setSizeConstraint(QLayout::SetFixedSize);
+	// On veut un espacement minime entre les boutons pour éviter la superposition de clicks
 	layout->setSpacing(5);
 	layout->setMargin(5);
 	auto groupeBoutons = new QButtonGroup(this);
+	// Cest indexs sont utiles pour placer les boutons
 	int indexLigne = 0;
 	int indexColonne= 0;
 	for (int i : range(64)) {
@@ -43,7 +49,9 @@ EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 		groupeBoutons->addButton(buton, i);
 		vecteursCases.push_back(buton);
 		layout->addWidget(buton, indexLigne, indexColonne);
+		// On place le bouton à la bonne position sur l'échiquier
 		if (indexColonne == 7) {
+			// Si on a remplit une ligne entière, on réinitialise l'index des colonnes et on passe à la suivante 
 			indexLigne++;
 			indexColonne = 0;
 		}
@@ -52,13 +60,15 @@ EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWindow(parent) {
 			indexColonne++;
 		}
 	}
+	// Cette portion du code provient est grandement inspiré de l'exemple de projet fournit par Fr Boyer sur moodle : 
 	#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)  // Le nom du signal idClicked existe depuis Qt 5.15
-		QObject::connect(groupeBoutons, &QButtonGroup::idClicked, &echiquierGraphique_, &EchiquierGraphique::traiterAppuiBouton); // ajouterChiffre prend un int, donc le ID du bouton est bon directement.
-	#else
-		QObject::connect(groupeBoutons, SIGNAL(buttonClicked(int)), &calc_, SLOT(ajouterChiffre(int)));
+		QObject::connect(groupeBoutons, &QButtonGroup::idClicked, &echiquierGraphique_, &EchiquierGraphique::traiterAppuiBouton); 
+#else
+		QObject::connect(groupeBoutons, SIGNAL(buttonClicked(int)), &echiquierGraphique_, SLOT(traiterAppuiBouton(int)));
 	#endif
 }
 
+// Fonction pour modifier l'image affichée par un bouton
 void EchiquierWindow::modifierContenuCase(int id, string typePiece, string couleurEquipe) {
 	
 	vecteursCases[id]->setText("");
@@ -68,7 +78,7 @@ void EchiquierWindow::modifierContenuCase(int id, string typePiece, string coule
 	vecteursCases[id]->setIcon(ButtonIcon);
 	vecteursCases[id]->setIconSize(QSize(60, 60));
 }
-
+// Fonction pour réaliser le dessin de l'échiquier
 void EchiquierWindow::paintEvent(QPaintEvent* ev) {
 	QPainter painter(this);
 	    
