@@ -17,7 +17,7 @@ void testPartie1() {
 	string sepratation = " \n --------------------------------------------------------------- \n";
 	cout << "Tableau initial" << endl;
 	cout << '\n';
-	Echiquier echiquier;
+	modele::Echiquier echiquier;
 	echiquier.afficherEchiquier();
 	cout << sepratation;
 	cout << '\n';
@@ -42,8 +42,8 @@ void testPartie1() {
 
 	// Creation d'une tour et test de deplacements
 	//Creation de la tour et positionnement de la tour aux coordonnees
-	Tour nouvellePiece("T", "Noir");
-	shared_ptr<Tour> pointeurTour = make_shared<Tour>(nouvellePiece);
+	modele::Tour nouvellePiece("T", "Noir");
+	shared_ptr<modele::Tour> pointeurTour = make_shared<modele::Tour>(nouvellePiece);
 	cout << "On demande la modification de la case (5,4) en une tour: " << endl;
 	cout << '\n';
 	echiquier.modifierCase(coordonneesInitiales, &pointeurTour);
@@ -70,8 +70,8 @@ void testPartie1() {
 
 	//Creation d'un cavalier et test de deplacements
 	//Creation du cavalier et positionnement
-	Cavalier premierCavalier("C", "Noir");
-	shared_ptr<Cavalier> pointeurCavalier = make_shared<Cavalier>(premierCavalier);
+	modele::Cavalier premierCavalier("C", "Noir");
+	shared_ptr<modele::Cavalier> pointeurCavalier = make_shared<modele::Cavalier>(premierCavalier);
 	pair<int, int> coordonneesCavalier(5, 4);
 	echiquier.modifierCase(coordonneesCavalier, &pointeurCavalier);
 	cout << "On positionne un cavalier aux coordonnees (5,4)" << endl;
@@ -100,8 +100,8 @@ void testPartie1() {
 
 	//Creation d'un roi et test de deplacements
 	//Creation du roi et positionnement
-	Roi premierRoi("R", "Noir");
-	shared_ptr<Roi> pointeurRoi = make_shared<Roi>(premierRoi);
+	modele::Roi premierRoi("R", "Noir");
+	shared_ptr<modele::Roi> pointeurRoi = make_shared<modele::Roi>(premierRoi);
 	pair<int, int> coordonneesRoi(2, 4);
 	echiquier.modifierCase(coordonneesRoi, &pointeurRoi);
 	cout << "On positionne le Roi aux coordonnees(2,4)" << endl;
