@@ -17,7 +17,6 @@ template <typename T>
 QPushButton* EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
 {
 	auto bouton = new QPushButton(this);
-	bouton->setText(text);
 	bouton->setFixedSize(95, 95);
 	if constexpr (!is_same_v<T, decltype(nullptr)>)
 		QObject::connect(bouton, &QPushButton::clicked, &echiquierGraphique_, slot);

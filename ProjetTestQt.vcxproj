@@ -143,7 +143,9 @@
     <ClInclude Include="Tour.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="CBlanc.png" />
     <Image Include="CNoir.png" />
+    <Image Include="RBlanc.png" />
     <Image Include="RNoir.png" />
     <Image Include="TBlanc.png" />
     <Image Include="TNoir.png" />

@@ -124,5 +124,11 @@
     <Image Include="TBlanc.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RBlanc.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="CBlanc.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
