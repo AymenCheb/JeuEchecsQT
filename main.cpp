@@ -50,22 +50,25 @@ int main(int argc, char *argv[])
 	Roi roiBlanc("R", "Blanc");
 	Tour tourBlanche("T", "Blanc");
 	Tour tourNoir("T", "Noir");
-	shared_ptr<Roi> pointeurRoiNoir = make_shared<Roi>(roiNoir);
+	/*shared_ptr<Roi> pointeurRoiNoir = make_shared<Roi>(roiNoir);
 	shared_ptr<Roi> pointeurRoiBlanc = make_shared<Roi>(roiBlanc);
 	shared_ptr<Tour> pointeurTourBlanche = make_shared<Tour>(tourBlanche);
-	shared_ptr<Tour> pointeurTourNoir = make_shared<Tour>(tourNoir);
+	shared_ptr<Tour> pointeurTourNoir = make_shared<Tour>(tourNoir);*/
 
-	pair<int, int> crdRoiNoir(0, 0), crdTourNoir(0, 1), crdTourBlance(0, 2);
+	pair<int, int> crdRoiNoir(0, 0), crdTourNoir(0, 1), crdTourBlance(0, 2), crdRoiBlanc(0,3);
 	// Test de la vérification de la mise en échecs: 
-	echiquier.modifierCase(crdRoiNoir, &pointeurRoiNoir);
-	echiquier.modifierCase(crdTourBlance, &pointeurTourBlanche);
-	echiquier.modifierCase(crdTourNoir, &pointeurTourNoir);
+	
 
 	echiquier.afficherEchiquier();
 	EchiquierWindow echiquierWindow;
 	MediateurModeleVue mediateurModeleVue(&echiquierWindow);
 	echiquier.lierMediateur(&mediateurModeleVue);
 	echiquierWindow.lierEchiquier(&echiquier);
+
+	echiquier.placerPiece(crdRoiNoir, &roiNoir);
+	echiquier.placerPiece(crdTourBlance, &tourBlanche);
+	echiquier.placerPiece(crdTourNoir, &tourNoir);
+	echiquier.placerPiece(crdRoiBlanc, &roiBlanc);
 	echiquierWindow.show();
 	return app.exec();
 }

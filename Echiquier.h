@@ -67,7 +67,7 @@ public:
 		mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_,
 			tableau_[coordonnesCase.first][coordonnesCase.second].get()->couleur_);
 	};
-
+	void placerPiece(pair<int, int> caseInitial, piece* pieceAplacer);
 };
 
 

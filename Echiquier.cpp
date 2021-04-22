@@ -201,9 +201,9 @@ pair<int, int> Echiquier::trouverPiece(std::string nature, std::string couleur) 
 		}
 	}
 	else if(couleur == "Blanc") {
-		for (int i = 0; i < equipes_[0].nMembres_; i++)
+		for (int i = 0; i < equipes_[1].nMembres_; i++)
 		{
-			pair<int, int> membre = equipes_[0].listeDesCasesMembres_[i];
+			pair<int, int> membre = equipes_[1].listeDesCasesMembres_[i];
 			if (tableau_[membre.first][membre.second].get()->nature_ == nature)
 			{
 				return membre;
@@ -211,4 +211,11 @@ pair<int, int> Echiquier::trouverPiece(std::string nature, std::string couleur) 
 		}
 	}
 	// Ajouter une exception pour le cas où aucun if n'est satisfait
+}
+
+void Echiquier::placerPiece(pair<int, int> caseInitial, piece* pieceAplacer) {
+	shared_ptr<piece> nouveauPointeur;
+	nouveauPointeur.reset(pieceAplacer);
+	modifierCase(caseInitial, &nouveauPointeur);
+	miseAjourGraphique(caseInitial);
 }
