@@ -82,7 +82,7 @@ void EchiquierWindow::modifierContenuCase(int id, string typePiece, string coule
 
 void EchiquierWindow::modifierCouleurCase(int id) {
 	vecteursCases[id]->setFlat(false);
-	vecteursCases[id]->setStyleSheet("QPushButton { background-color: red }");
+	vecteursCases[id]->setStyleSheet("QPushButton { background-color: rgb(230,83,83); }");
 	
 	
 }
