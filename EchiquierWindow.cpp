@@ -83,7 +83,7 @@ void interfaceGraphique::EchiquierWindow::modifierContenuCase(int id, string typ
 
 void interfaceGraphique::EchiquierWindow::modifierBordureCase(int id) {
 	vecteursCases[id]->setFlat(false);
-	vecteursCases[id]->setStyleSheet("QPushButton{ border-width: 5px; border-style: solid; border-color: green green green green; }");
+	vecteursCases[id]->setStyleSheet("QPushButton{ border-width: 5px; border-style: solid; border-color: rgb(125, 232, 127) rgb(125, 232, 127) rgb(125, 232, 127) rgb(125, 232, 127); }");
 }
 
 void interfaceGraphique::EchiquierWindow::retirerBordureCase(int id) {
