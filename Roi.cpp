@@ -4,11 +4,14 @@
 #include "Piece.h"
 #include "Roi.h"
 using namespace std;
+int Roi::compteurInstances_ = 0;
 //Constructeur des Rois
 Roi::Roi(string nature, string couleur) : piece(nature, couleur) {
+	compteurInstances_++;
 }
 //]
 
+Roi::~Roi() { compteurInstances_--; };
 bool Roi::demanderMouvement(const std::pair<int, int> depart, const std::pair<int, int> destination) {
 	/*Le roi peut se deplacer uniquement d'une cases dans toute les direction. Si il part de (x,y) et arrive a (w,z)
 	alors,  |x-w| > 1 ou si |y-z| > 1, cela signifie que le roi ne s'est pas deplacer uniquement d'une case,
