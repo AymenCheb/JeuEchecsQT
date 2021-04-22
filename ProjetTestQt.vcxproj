@@ -123,12 +123,12 @@
     <ClCompile Include="Mediateur.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="Roi.cpp" />
-    <ClCompile Include="TestCalc.cpp" />
     <ClCompile Include="Tests.cpp" />
     <ClCompile Include="Tour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cavalier.h" />
+    <ClInclude Include="Exceptions.h" />
     <ClInclude Include="Echiquier.h" />
     <QtMoc Include="EchiquierGraphique.h" />
     <QtMoc Include="EchiquierWindow.h" />

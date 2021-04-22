@@ -3,11 +3,27 @@
 #include <vector>
 #include "Piece.h"
 #include "Roi.h"
+#include "Exceptions.h"
 using namespace std;
 int Roi::compteurInstances_ = 0;
 //Constructeur des Rois
+void Roi::verifierSurplusRoi() {
+	if (compteurInstances_ > 2)
+	{
+		throw ErreurSurplusRoi("Il y a déjà 2 rois dans la partie ");
+	}
+}
 Roi::Roi(string nature, string couleur) : piece(nature, couleur) {
 	compteurInstances_++;
+	try
+	{
+		verifierSurplusRoi();
+	}
+	catch (const ErreurSurplusRoi& e)
+	{
+		this->~Roi();
+		cout << "Il y avait déjà 2 rois, dommage pour le nouveau né!" << endl;
+	}
 }
 //]
 

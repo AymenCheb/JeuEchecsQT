@@ -1,8 +1,10 @@
 #pragma once
 #include "Piece.h"
+#include "Exceptions.h"
 class Roi :public piece {
 private:
 	static int compteurInstances_;
+	void verifierSurplusRoi();
 public:
 	Roi(std::string nature, std::string couleur);
 	~Roi();

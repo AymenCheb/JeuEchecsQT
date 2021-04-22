@@ -50,6 +50,7 @@ int main(int argc, char *argv[])
 	Echiquier echiquier;
 	Roi roiNoir("R", "Noir");
 	Roi roiBlanc("R", "Blanc");
+	Roi roiKazakistan("R", "Bleu");
 	Tour tourBlanche("T", "Blanc");
 	Tour tourNoir("T", "Noir");
 	Cavalier cavalierNoir("C", "Noir"), cavalierBlanc("C", "Blanc");
