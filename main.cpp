@@ -47,19 +47,19 @@ int main(int argc, char *argv[])
 
 	// Les lignes de codes suivantes s'occupe de créer les pièces de la partie: 
 	// Note: Les prochaines versions du projet auront une fonction pour se charger de ces étapes
-	Echiquier echiquier;
-	Roi roiNoir("R", "Noir");
-	Roi roiBlanc("R", "Blanc");
-	Roi roiKazakistan("R", "Bleu");
-	Tour tourBlanche("T", "Blanc");
-	Tour tourNoir("T", "Noir");
-	Cavalier cavalierNoir("C", "Noir"), cavalierBlanc("C", "Blanc");
-	shared_ptr<Roi> pointeurRoiNoir = make_shared<Roi>(roiNoir);
-	shared_ptr<Roi> pointeurRoiBlanc = make_shared<Roi>(roiBlanc);
-	shared_ptr<Tour> pointeurTourBlanche = make_shared<Tour>(tourBlanche);
-	shared_ptr<Tour> pointeurTourNoir = make_shared<Tour>(tourNoir);
-	shared_ptr<Cavalier> pointeurCavalierNoir = make_shared<Cavalier>(cavalierNoir);
-	shared_ptr<Cavalier> pointeurCavalierBlanc = make_shared<Cavalier>(cavalierBlanc);
+	modele::Echiquier echiquier;
+	modele::Roi roiNoir("R", "Noir");
+	modele::Roi roiBlanc("R", "Blanc");
+	modele::Roi roiKazakistan("R", "Bleu");
+	modele::Tour tourBlanche("T", "Blanc");
+	modele::Tour tourNoir("T", "Noir");
+	modele::Cavalier cavalierNoir("C", "Noir"), cavalierBlanc("C", "Blanc");
+	shared_ptr<modele::Roi> pointeurRoiNoir = make_shared<modele::Roi>(roiNoir);
+	shared_ptr<modele::Roi> pointeurRoiBlanc = make_shared<modele::Roi>(roiBlanc);
+	shared_ptr<modele::Tour> pointeurTourBlanche = make_shared<modele::Tour>(tourBlanche);
+	shared_ptr<modele::Tour> pointeurTourNoir = make_shared<modele::Tour>(tourNoir);
+	shared_ptr<modele::Cavalier> pointeurCavalierNoir = make_shared<modele::Cavalier>(cavalierNoir);
+	shared_ptr<modele::Cavalier> pointeurCavalierBlanc = make_shared<modele::Cavalier>(cavalierBlanc);
 	// Pour l'instant, nous commencons une partie dans un scénario de fin de jeu
 	pair<int, int> crdRoiNoir(7, 6), crdTourNoir(6, 6), crdTourBlance(0, 6), crdRoiBlanc(0,7), crdCavalierBlanc(4,4), crdCavalierNoir(3,4);
 	// Test de la vérification de la mise en échecs: 
