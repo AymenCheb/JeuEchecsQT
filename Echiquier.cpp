@@ -15,7 +15,8 @@ using namespace std;
 
 
 //Constructeur de l'echiquier
-Echiquier::Echiquier(Equipe equipe1, Equipe equipe2) {
+
+modele::Echiquier::Echiquier(Equipe equipe1, Equipe equipe2) {
 	// Quand on crée l'échiquier, on veut que les cases soient vides initialement 
 	equipes_[0] = equipe1;
 	equipes_[1] = equipe2;
@@ -29,7 +30,7 @@ Echiquier::Echiquier(Equipe equipe1, Equipe equipe2) {
 }
 
 // Cette fonction retourne un int pour indiquer à quelle équipe appartient une piece 
-int Echiquier::determinerEquipe(std::pair<int, int> coordonnees) {
+int modele::Echiquier::determinerEquipe(std::pair<int, int> coordonnees) {
 	if (equipes_[0].verifierPresenceMembre(coordonnees))
 		return 0;
 	if (equipes_[1].verifierPresenceMembre(coordonnees))
@@ -37,7 +38,8 @@ int Echiquier::determinerEquipe(std::pair<int, int> coordonnees) {
 	else return 2;
 };
 // Cette fonction attribu correctement une equipe a une case en fonction de sa couleur
-void Echiquier::attribuerEquipe(std::pair<int, int> coordonnes) {
+void modele::Echiquier::attribuerEquipe(std::pair<int, int> coordonnes) {
+	using namespace modele;
 	string couleurPiece = tableau_[coordonnes.first][coordonnes.second].get()->couleur_;
 	if (couleurPiece == equipes_[0].couleur_)
 		equipes_[0].ajouterMembre(coordonnes);
@@ -45,7 +47,8 @@ void Echiquier::attribuerEquipe(std::pair<int, int> coordonnes) {
 		equipes_[1].ajouterMembre(coordonnes);
 	else cout << "La case n'a pas la meme couleur d'une des equipes" << endl;
 }
-bool Echiquier::verifierEchec(pair<int, int> positionRoi) {
+bool modele::Echiquier::verifierEchec(pair<int, int> positionRoi) {
+	using namespace modele;
 	// Ajouter des tests pour vérifier que l'on passe bien un roi 
 	int indexEquipe = determinerEquipe(positionRoi);
 	// Ce switch s'occupe de retirer la case de l'équipe qui lui correspond
@@ -74,7 +77,7 @@ bool Echiquier::verifierEchec(pair<int, int> positionRoi) {
 
 
 //Cette methode permet de vider une case, en y inserant une Piece ( directement de la classe Piece, cette Piece n'est ni une tour, ni un fou etc..)
-void Echiquier::viderCase(const std::pair<int, int> coordonnees) {
+void modele::Echiquier::viderCase(const std::pair<int, int> coordonnees) {
 	int indexEquipe = determinerEquipe(coordonnees);
 	// Ce switch s'occupe de retirer la case de l'équipe qui lui correspond
 	switch (indexEquipe)
@@ -90,7 +93,7 @@ void Echiquier::viderCase(const std::pair<int, int> coordonnees) {
 	tableau_[coordonnees.first][coordonnees.second] = make_shared<piece>();
 }
 //Methode pour afficher l'echiquier dans le terminal
-void Echiquier::afficherEchiquier() {
+void modele::Echiquier::afficherEchiquier() {
 	for (int i = 0; i < 8; i++) // Parcours les lignes de l'échiquier
 	{
 		for (int j = 0; j < 8; j++) // Parcours les colonnes de l'échiquier
@@ -100,7 +103,7 @@ void Echiquier::afficherEchiquier() {
 		cout << '\n'; // 
 	}
 }
-void Echiquier::afficherMembresEquipe(string nom) {
+void modele::Echiquier::afficherMembresEquipe(string nom) {
 	if (equipes_[0].nom_ == nom)
 	{
 		for (int i = 0; i < equipes_[0].nMembres_; i++) {
@@ -109,7 +112,7 @@ void Echiquier::afficherMembresEquipe(string nom) {
 		}
 	}
 }
-bool Echiquier::validerMouvement(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination) {
+bool modele::Echiquier::validerMouvement(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination) {
 	// Demande à la pièce de vérifier si le mouvement demander est possible
 	bool mouvementPossible = tableau_[coordonneesInitiales.first][coordonneesInitiales.second].get()->demanderMouvement(coordonneesInitiales, coordonneesDestination);
 	if (mouvementPossible)
@@ -125,7 +128,7 @@ bool Echiquier::validerMouvement(const std::pair<int, int> coordonneesInitiales,
 
 
 // Methode permettant de deplacer une piece, on donne en parametres les coordonnees initiales de la piece ainsi que les coordonnees de destination
-void Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination) {
+void modele::Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination) {
 	mediateur_->retablirCase();
 	// On mémorise les pointeurs des pieces aux cases de départ et de destination
 	afficherInfosCase(coordonneesDestination);
@@ -162,7 +165,7 @@ void Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, co
 
 /*Methode permettant de verifier la legallite d'un mouvement : ce n'est pas cette methode qui verifie les regles de deplacement specifiques a chaque pieces,
 cette methode verifie plutot des regles plus generales, comme par exemple si une piece alliee se trouve sur la case sur laquelle on souhaite se deplacer etc*/
-bool Echiquier::verifierLegaliteMouvement(const std::vector<std::pair<int, int>> chemin, const std::pair<int, int> destination, string couleurPiece) {
+bool modele::Echiquier::verifierLegaliteMouvement(const std::vector<std::pair<int, int>> chemin, const std::pair<int, int> destination, string couleurPiece) {
 	int etapeChemin = 0;
 	pair<int, int> prochaineCase = chemin[etapeChemin];
 	do
@@ -185,14 +188,14 @@ bool Echiquier::verifierLegaliteMouvement(const std::vector<std::pair<int, int>>
 }
 
 //Methode qui permet d'afficher les informations d'une case precise, on passe en parametre les coordonnees de la case
-void Echiquier::afficherInfosCase(pair<int, int> coordonnees) {
+void modele::Echiquier::afficherInfosCase(pair<int, int> coordonnees) {
 	cout << "La case aux coordonnees: " << coordonnees.first << ',' << coordonnees.second << endl;
 	cout << "Est une " << tableau_[coordonnees.first][coordonnees.second].get()->nature_;
 
 	cout << " de couleur " << tableau_[coordonnees.first][coordonnees.second].get()->couleur_ << endl;
 }//]
 
-pair<int, int> Echiquier::trouverPiece(std::string nature, std::string couleur) {
+pair<int, int> modele::Echiquier::trouverPiece(std::string nature, std::string couleur) {
 
 	// Maybe use method pattern instead
 	if (couleur == "Noir") {
@@ -219,7 +222,7 @@ pair<int, int> Echiquier::trouverPiece(std::string nature, std::string couleur) 
 }
 
 // Fonction pour mémoriser une pièce 
-void Echiquier::memoriserPiece(shared_ptr<piece>& pieceDeplacee) {
+void modele::Echiquier::memoriserPiece(shared_ptr<piece>& pieceDeplacee) {
 	// Si on est dans le mode mémorisation et que la mémoire n'est pas pleine, on mémorise la pièce
 	if (nPiecesMemorisees <= 1 and modeMemorisation)
 	{
@@ -235,7 +238,7 @@ void Echiquier::memoriserPiece(shared_ptr<piece>& pieceDeplacee) {
 	}
 }
 // Fonction faisant appel au médiateur ModeleVue pour mettre à jour l'interface graphique
-void Echiquier::miseAjourGraphique(pair<int, int> coordonnesCase) {
+void modele::Echiquier::miseAjourGraphique(pair<int, int> coordonnesCase) {
 	mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_,
 		tableau_[coordonnesCase.first][coordonnesCase.second].get()->couleur_);
 };

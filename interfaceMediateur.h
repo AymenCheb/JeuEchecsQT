@@ -4,5 +4,5 @@ using namespace std;
 #include "Echiquier.h"
 // Interface des médiateurs
 class Mediateur {
-	virtual void notifierEchiquier(Echiquier& echiquier, std::string evenement) = 0;
+	virtual void notifierEchiquier(modele::Echiquier& echiquier, std::string evenement) = 0;
 };
