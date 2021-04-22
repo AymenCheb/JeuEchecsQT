@@ -14,7 +14,7 @@ protected:
 	std::string couleur_ = "vide";
 public:
 	piece();
-	piece(std::string nature, std::string couleur); // Rajouter la couleur au concstructeur 
+	piece(std::string nature, std::string couleur); 
 	void afficher() override;
 	std::vector<std::pair<int, int>> trouverChemin(const std::pair<int, int> depart, const std::pair<int, int> destination) override;
 	bool demanderMouvement(const std::pair<int, int> depart, const std::pair<int, int> destination) override;
