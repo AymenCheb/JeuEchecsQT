@@ -78,6 +78,7 @@ int main(int argc, char *argv[])
 	echiquier.placerPiece(crdRoiBlanc, &pointeurRoiBlanc);
 	echiquier.placerPiece(crdCavalierNoir, &pointeurCavalierNoir);
 	echiquier.placerPiece(crdCavalierBlanc, &pointeurCavalierBlanc);
+	echiquierWindow.setWindowState(Qt::WindowMaximized);
 	echiquierWindow.show();
 	return app.exec();
 }
