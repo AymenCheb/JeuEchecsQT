@@ -16,6 +16,8 @@ public:
 	virtual void paintEvent(QPaintEvent* event);
 	void lierEchiquier(Echiquier* echiquier) { echiquierGraphique_.mediateur.lierEchiquier(echiquier); };
 	void modifierContenuCase(int id, string typePiece, string couleurEquipe);
+	void modifierCouleurCase(int id);
+	void couleurCaseOriginale(int id);
 public slots:
 
 private:

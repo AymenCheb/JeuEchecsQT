@@ -11,7 +11,16 @@
 #include "Cavalier.h"
 #include "Tour.h"
 #include "Echiquier.h"
-
+# ifndef WIN32_LEAN_AND_MEAN
+#   define WIN32_LEAN_AND_MEAN
+# endif
+# ifndef VC_EXTRALEAN
+#   define VC_EXTRALEAN
+# endif
+# ifndef NOMINMAX
+#   define NOMINMAX
+# endif
+#include <Windows.h>
 using namespace std;
 
 
@@ -127,6 +136,7 @@ bool Echiquier::validerMouvement(const std::pair<int, int> coordonneesInitiales,
 
 // Methode permettant de deplacer une piece, on donne en parametres les coordonnees initiales de la piece ainsi que les coordonnees de destination
 void Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination) {
+	mediateur_->retablirCase();
 	// On mémorise les pointeurs des pieces aux cases de départ et de destination
 	afficherInfosCase(coordonneesDestination);
 	
@@ -143,7 +153,7 @@ void Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, co
 			// Si oui, on annule le déplacement
 			modifierCase(coordonneesInitiales, &historiquePiecesDeplacees[1]);
 			modifierCase(coordonneesDestination, &historiquePiecesDeplacees[0]);
-			
+			mediateur_->changerCouleurCase(coordonneesDestination);
 			cout << "Ce mouvement mettrait le roi de la " << historiquePiecesDeplacees[0].get()->nature_ << " en echec! " << endl;
 		}
 		else
@@ -152,7 +162,12 @@ void Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, co
 			miseAjourGraphique(coordonneesDestination);
 		}
 	}
-	else cout << "Mouvement impossible " << endl;
+	else {
+		mediateur_->changerCouleurCase(coordonneesDestination);
+		
+		
+		cout << "Mouvement impossible " << endl;
+	}
 }
 
 /*Methode permettant de verifier la legallite d'un mouvement : ce n'est pas cette methode qui verifie les regles de deplacement specifiques a chaque pieces,

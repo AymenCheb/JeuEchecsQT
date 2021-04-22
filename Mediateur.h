@@ -11,5 +11,4 @@ public:
 	void interpreterAppui(std::pair<int, int> coordonnesQT);
 	void lierEchiquier(Echiquier* echiquier) { echiquier_ = echiquier; };
 
-
 };

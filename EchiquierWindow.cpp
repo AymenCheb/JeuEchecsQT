@@ -11,7 +11,19 @@
 #include <type_traits>
 #include <cppitertools/range.hpp>
 #include <qpainter.h>
+
+# ifndef WIN32_LEAN_AND_MEAN
+#   define WIN32_LEAN_AND_MEAN
+# endif
+# ifndef VC_EXTRALEAN
+#   define VC_EXTRALEAN
+# endif
+# ifndef NOMINMAX
+#   define NOMINMAX
+# endif
+#include <Windows.h>
 using iter::range;
+
 
 template <typename T>
 QPushButton* EchiquierWindow::nouveauBouton(const QString& text, const T& slot)
@@ -67,8 +79,20 @@ void EchiquierWindow::modifierContenuCase(int id, string typePiece, string coule
 	QIcon ButtonIcon(pixmap);
 	vecteursCases[id]->setIcon(ButtonIcon);
 	vecteursCases[id]->setIconSize(QSize(60, 60));
+	
 }
 
+void EchiquierWindow::modifierCouleurCase(int id) {
+	vecteursCases[id]->setFlat(false);
+	vecteursCases[id]->setStyleSheet("QPushButton { background-color: red }");
+	
+	
+}
+void EchiquierWindow::couleurCaseOriginale(int id) {
+	
+	vecteursCases[id]->setFlat(true);
+	vecteursCases[id]->setStyleSheet("QPushButton { background-color: transparent }");
+}
 void EchiquierWindow::paintEvent(QPaintEvent* ev) {
 	QPainter painter(this);
 	    
