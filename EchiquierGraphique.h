@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Mediateur.h"
 using namespace std;
+// Cette classe intéragit avec le médiateur vue-modèle
 class EchiquierGraphique : public QObject {
 	Q_OBJECT
 public:
@@ -12,14 +13,8 @@ public:
 	pair<int, int> traduireIDenCoordonnes(int id);
 	MediateurVueModele mediateur;
 public slots:
-	/*pair<int, int> obtenirCoordonnes();*/
-	/*void changerTypeAffiche(string nouveauType);
-	void changerRemplissage();*/
-	void afficherCoordonnes(int id) { mediateur.interpreterAppui(traduireIDenCoordonnes(id)); };
+	void traiterAppuiBouton(int id) { mediateur.interpreterAppui(traduireIDenCoordonnes(id)); };
 signals:
-	/*void coordonnesDemandee();
-	void typeChange();
-	void remplissageChange();*/
 private:
 	string typePiece_;
 	
