@@ -8,6 +8,7 @@ void MediateurVueModele::interpreterAppui(std::pair<int, int> coordonnesQT) {
 	{
 		memoireAppuis[nAppuisEnregistres_] = coordonnesQT;
 		nAppuisEnregistres_++;
+		echiquier_->contour(memoireAppuis[0]);
 	}
 	// Si la mémoire est pleine, on traite les appuis et réinitialise  le nombre d'appuis enregistrés
 	if (nAppuisEnregistres_ > 1)
@@ -15,8 +16,12 @@ void MediateurVueModele::interpreterAppui(std::pair<int, int> coordonnesQT) {
 		// Cette condition vérifie que l'on essaye pas de déplacer une case vers ses propres coordonnes
 		if (memoireAppuis[0] != memoireAppuis[1])
 		{
+
 			echiquier_->deplacerPiece(memoireAppuis[0], memoireAppuis[1]);
 			echiquier_->afficherEchiquier();
+		}
+		else {
+			echiquier_->retirerContour(memoireAppuis[0]);
 		}
 		nAppuisEnregistres_ = 0;
 	}

@@ -27,7 +27,13 @@ public:
 		echiquierWindow_->couleurCaseOriginale(transformerCordonnesID(cordonnees));
 		
 	}
+	void colorerContour(pair<int, int> cordonnees) override {
+		echiquierWindow_->modifierBordureCase(transformerCordonnesID(cordonnees));
+	}
 
+	void retirerContour(pair<int, int> cordonnees) override {
+		echiquierWindow_->retirerBordureCase(transformerCordonnesID(cordonnees));
+	}
 	void retablirCase() override {
 		for (int i = 0; i < nbBoutonsTraites_; i++)
 		{

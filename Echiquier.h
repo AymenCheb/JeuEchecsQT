@@ -35,6 +35,8 @@ namespace modele{
 			// On réattribue une équipe à la pièce en fonction de sa nouvelle couleur
 			attribuerEquipe(coordonnees);
 		};
+		void retirerContour(std::pair<int, int> cordonnees);
+		void contour(std::pair<int, int> coordonneesinitiales);
 		void viderCase(const std::pair<int, int> coordonnees);
 		void deplacerPiece(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination);
 		bool verifierLegaliteMouvement(const std::vector<std::pair<int, int>>, const std::pair<int, int> destination, std::string couleurPiece);

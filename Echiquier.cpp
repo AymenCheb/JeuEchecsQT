@@ -130,6 +130,7 @@ bool modele::Echiquier::validerMouvement(const std::pair<int, int> coordonneesIn
 // Methode permettant de deplacer une piece, on donne en parametres les coordonnees initiales de la piece ainsi que les coordonnees de destination
 void modele::Echiquier::deplacerPiece(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination) {
 	mediateur_->retablirCase();
+	retirerContour(coordonneesInitiales);
 	// On mémorise les pointeurs des pieces aux cases de départ et de destination
 	afficherInfosCase(coordonneesDestination);
 	
@@ -242,3 +243,11 @@ void modele::Echiquier::miseAjourGraphique(pair<int, int> coordonnesCase) {
 	mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_,
 		tableau_[coordonnesCase.first][coordonnesCase.second].get()->couleur_);
 };
+
+void modele::Echiquier::contour(pair<int, int> coordonneesInitiales) {
+	mediateur_->colorerContour(coordonneesInitiales);
+}
+
+void modele::Echiquier::retirerContour(pair<int, int> coordonnees) {
+	mediateur_->retirerContour(coordonnees);
+}
