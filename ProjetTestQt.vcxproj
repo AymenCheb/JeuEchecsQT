@@ -118,6 +118,7 @@
     <ClCompile Include="EchiquierGraphique.cpp" />
     <ClCompile Include="EchiquierWindow.cpp" />
     <ClCompile Include="Equipe.cpp" />
+    <ClCompile Include="fabriquePieces.cpp" />
     <ClCompile Include="googletest\src\gtest-all.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mediateur.cpp" />
@@ -133,6 +134,7 @@
     <QtMoc Include="EchiquierGraphique.h" />
     <QtMoc Include="EchiquierWindow.h" />
     <ClInclude Include="Equipe.h" />
+    <ClInclude Include="fabriquePieces.h" />
     <ClInclude Include="interfaceMediateur.h" />
     <ClInclude Include="interfaceMediateurQT.h" />
     <ClInclude Include="Mediateur.h" />
