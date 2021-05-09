@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
 	// Note: Les prochaines versions du projet auront une fonction pour se charger de ces étapes
 	
 	modele::Echiquier echiquier;
+	echiquier.prevenirAffichage();
 	modele::Echiquier finQuadratique, finTriangulaire;
 
 	// Pour l'instant, nous commencons une partie dans un scénario de fin de jeu

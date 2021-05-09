@@ -23,9 +23,9 @@ namespace modele{
 		MediateurQT* mediateur_;
 		std::shared_ptr<piece> tableau_[8][8]; // Géneration d'un échiquier de 8x8 
 		Equipe equipes_[2];
+		bool affichable_ = true;
 	public:
 		Echiquier(Equipe equipe1 = Equipe("Equipe noire", "Noir"), Equipe equipe2 = Equipe("Equipe blanche", "Blanc"));
-
 		// Vu que cette fonction utilise un template, il est nécessaire qu'elle soit implémentée dans le hpp ou le main directement
 		template <class TypePiece>
 		void modifierCase(const std::pair<int, int> coordonnees, const std::shared_ptr<TypePiece>* remplacement) {
@@ -65,6 +65,7 @@ namespace modele{
 		};
 		
 		void reAffichageGraphique();
+		void prevenirAffichage() { affichable_ = false; };
 	};
 }
 

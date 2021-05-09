@@ -22,7 +22,6 @@ void testPartie1(modele::Echiquier& echiquier) {
 	cout << sepratation;
 	cout << '\n';
 	pair<int, int> nouvelleCoordonnees, coordonneesInitiales;
-
 	// Test: déplacer une case vide 
 	nouvelleCoordonnees.first = 7;
 	nouvelleCoordonnees.second = 7;
