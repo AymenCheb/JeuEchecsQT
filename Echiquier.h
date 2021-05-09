@@ -39,7 +39,7 @@ namespace modele{
 		void retirerContour(std::pair<int, int> cordonnees);
 		void contour(std::pair<int, int> coordonneesinitiales);
 		void viderCase(const std::pair<int, int> coordonnees);
-		/*void viderEchiquier();*/
+		void viderEchiquier();
 		void deplacerPiece(const std::pair<int, int> coordonneesInitiales, const std::pair<int, int> coordonneesDestination);
 		bool verifierLegaliteMouvement(const std::vector<std::pair<int, int>>, const std::pair<int, int> destination, std::string couleurPiece);
 		void afficherEchiquier();
@@ -63,16 +63,7 @@ namespace modele{
 			modifierCase(caseInitial, pieceAplacer);
 			//miseAjourGraphique(caseInitial);
 		};
-		/*template <class TypePiece>
-		void PlacerPieces(vector<pair<int, int>> cases, vector<shared_ptr<TypePiece>*> piecesAplacer) {
-			int indexCrd = 0;
-			for (auto it = piecesAplacer.begin(); it != piecesAplacer.end() ; ++it)
-			{
-				pair<int,int> caseCourante = cases[indexCrd];
-				tableau_[caseCourante.first][caseCourante.second] = *it;
-				indexCrd++;
-			}
-		}*/
+		
 		void reAffichageGraphique();
 	};
 }

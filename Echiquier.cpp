@@ -252,15 +252,15 @@ void modele::Echiquier::retirerContour(pair<int, int> coordonnees) {
 	mediateur_->retirerContour(coordonnees);
 }
 
-//void modele::Echiquier::viderEchiquier() {
-//	for (int i = 0; i < 8; i++) // Parcours les lignes de l'échiquier
-//	{
-//		for (int j = 0; j < 8; j++) // Parcours les colonnes de l'échiquier
-//		{
-//			viderCase(pair<int, int>(i, j));
-//		}
-//	}
-//}
+void modele::Echiquier::viderEchiquier() {
+	for (int i = 0; i < 8; i++) // Parcours les lignes de l'échiquier
+	{
+		for (int j = 0; j < 8; j++) // Parcours les colonnes de l'échiquier
+		{
+			viderCase(pair<int, int>(i, j));
+		}
+	}
+}
 
 void modele::Echiquier::reAffichageGraphique() {
 	for (int i = 0; i < 8; i++) // Parcours les lignes de l'échiquier

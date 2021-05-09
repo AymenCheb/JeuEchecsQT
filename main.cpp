@@ -58,11 +58,26 @@ int main(int argc, char *argv[])
 
 	// Les lignes de codes suivantes s'occupe de créer les pièces de la partie: 
 	// Note: Les prochaines versions du projet auront une fonction pour se charger de ces étapes
+	
 	modele::Echiquier echiquier;
 	modele::Echiquier finQuadratique, finTriangulaire;
+
+	// Pour l'instant, nous commencons une partie dans un scénario de fin de jeu
+	pair<int, int> crdRoiNoir, crdTourNoir, crdTourBlance, crdRoiBlanc, crdCavalierBlanc, crdCavalierNoir;
+
+	interfaceGraphique::EchiquierWindow echiquierWindow;
+	echiquierWindow.ajouterEchiquier(&finTriangulaire);
+	echiquierWindow.ajouterEchiquier(&finQuadratique);
+	MediateurModeleVue mediateurModeleVue(&echiquierWindow);
+	
+	echiquier.lierMediateur(&mediateurModeleVue);
+	finTriangulaire.lierMediateur(&mediateurModeleVue);
+	finQuadratique.lierMediateur(&mediateurModeleVue);
+	echiquierWindow.lierEchiquier(&echiquier);
+	testPartie1(echiquier);
+	
 	modele::Roi roiNoir("Noir");
 	modele::Roi roiBlanc("Blanc");
-	modele::Roi roiKazakistan("Bleu");
 	modele::Tour tourBlanche("Blanc");
 	modele::Tour tourNoir("Noir");
 	modele::Cavalier cavalierNoir("Noir"), cavalierBlanc("Blanc");
@@ -72,18 +87,6 @@ int main(int argc, char *argv[])
 	shared_ptr<modele::Tour> pointeurTourNoir = make_shared<modele::Tour>(tourNoir);
 	shared_ptr<modele::Cavalier> pointeurCavalierNoir = make_shared<modele::Cavalier>(cavalierNoir);
 	shared_ptr<modele::Cavalier> pointeurCavalierBlanc = make_shared<modele::Cavalier>(cavalierBlanc);
-	// Pour l'instant, nous commencons une partie dans un scénario de fin de jeu
-	pair<int, int> crdRoiNoir, crdTourNoir, crdTourBlance, crdRoiBlanc, crdCavalierBlanc, crdCavalierNoir;
-
-	interfaceGraphique::EchiquierWindow echiquierWindow;
-	echiquierWindow.ajouterEchiquier(&finTriangulaire);
-	echiquierWindow.ajouterEchiquier(&finQuadratique);
-	MediateurModeleVue mediateurModeleVue(&echiquierWindow);
-	echiquier.lierMediateur(&mediateurModeleVue);
-	finTriangulaire.lierMediateur(&mediateurModeleVue);
-	finQuadratique.lierMediateur(&mediateurModeleVue);
-	echiquierWindow.lierEchiquier(&echiquier);
-	
 	
 	// Il y a certainement des manières plus élégantes de réaliser cela, mais par soucis de simpliciter nous avons implémenté les différentes parties avec un switch des valeurs des coordonnées
 
