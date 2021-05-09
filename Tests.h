@@ -13,4 +13,4 @@
 #include "EchiquierWindow.h"
 #include "MediateurModeleVue.h"
 // Ce fichier header contient les tests du livrable 1
-void testPartie1(modele::Echiquier& echiquier);
+void testModele(modele::Echiquier& echiquier);

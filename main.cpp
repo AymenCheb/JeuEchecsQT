@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 	finTriangulaire.lierMediateur(&mediateurModeleVue);
 	finQuadratique.lierMediateur(&mediateurModeleVue);
 	echiquierWindow.lierEchiquier(&echiquier);
-	testPartie1(echiquier);
+	testModele(echiquier);
 	
 	modele::Roi roiNoir("Noir");
 	modele::Roi roiBlanc("Blanc");

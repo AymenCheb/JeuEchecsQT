@@ -14,7 +14,7 @@
 using namespace std;
 
 
-void testPartie1(modele::Echiquier& echiquier) {
+void testModele(modele::Echiquier& echiquier) {
 	string sepratation = " \n --------------------------------------------------------------- \n";
 	cout << "Tableau initial" << endl;
 	cout << '\n';
@@ -35,6 +35,11 @@ void testPartie1(modele::Echiquier& echiquier) {
 	cout << sepratation;
 	cout << '\n';
 	echiquier.deplacerPiece(coordonneesInitiales, coordonneesInitiales);
+	// Test trouver chemin piece vide: 
+	modele::piece unePiece; 
+	unePiece.trouverChemin(coordonneesInitiales, nouvelleCoordonnees);
+	// Test contour: 
+	echiquier.contour(coordonneesInitiales);
 	// Tests déplacement de pièces: 
 	// Test du nombre limite de rois:
 	modele::Roi roiNoir("Noir");
