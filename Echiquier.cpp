@@ -45,7 +45,7 @@ void modele::Echiquier::attribuerEquipe(std::pair<int, int> coordonnes) {
 		equipes_[0].ajouterMembre(coordonnes);
 	else if (couleurPiece == equipes_[1].couleur_)
 		equipes_[1].ajouterMembre(coordonnes);
-	else cout << "La case n'a pas la meme couleur d'une des equipes" << endl;
+
 }
 bool modele::Echiquier::verifierEchec(pair<int, int> positionRoi) {
 	using namespace modele;

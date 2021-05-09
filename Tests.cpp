@@ -81,18 +81,32 @@ void testPartie1(modele::Echiquier& echiquier) {
 	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
 	crdCavalier = destinationCavalier;
 
-	destinationCavalier.first = 3;
-	destinationCavalier.second = 2;
+	destinationCavalier.first = 4;
+	destinationCavalier.second = 3;
 	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
 	crdCavalier = destinationCavalier;
 
 	destinationCavalier.first = 1;
 	destinationCavalier.second = 1;
 	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
-	crdCavalier = destinationCavalier;
+
+	destinationCavalier.first = 7;
+	destinationCavalier.second = 6;
+	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
+
+	destinationCavalier.first = 6;
+	destinationCavalier.second = 7;
+	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
 
 
-
+	//Test mise en echec du roi
+	shared_ptr<modele::Roi> pointeurRoiBlanc = make_shared<modele::Roi>(roiBlanc);
+	pair<int, int> coordonneesRoiBlanc(2, 5);
+	echiquier.modifierCase(coordonneesRoiBlanc, &pointeurRoiBlanc);
+	pair<int, int> destinationRoiBlanc(2, 4);
+	echiquier.deplacerPiece(coordonneesRoiBlanc, destinationRoiBlanc);
+	echiquier.afficherEchiquier();
+	echiquier.afficherMembresEquipe("Equipe noire");
 	echiquier.viderCase(crdTour);
 	echiquier.viderEchiquier();
 }
