@@ -106,6 +106,18 @@ void testPartie1(modele::Echiquier& echiquier) {
 	pair<int, int> destinationRoiBlanc(2, 4);
 	echiquier.deplacerPiece(coordonneesRoiBlanc, destinationRoiBlanc);
 	echiquier.afficherEchiquier();
+
+	//Test deplacement sur une case ou une piece alliee se trouve
+	destinationTour.first = 4;
+	destinationTour.second = 3;
+	echiquier.deplacerPiece(crdTour, destinationTour);
+
+	//Test depalcment de la tour alors qu'une piece alliee se trouve sur le chemin
+	destinationTour.first = 4;
+	destinationTour.second = 4; 
+	echiquier.deplacerPiece(crdTour, destinationTour);
+
+
 	echiquier.afficherMembresEquipe("Equipe noire");
 	echiquier.viderCase(crdTour);
 	echiquier.viderEchiquier();
