@@ -70,6 +70,30 @@ void testPartie1(modele::Echiquier& echiquier) {
 	destinationTour.first = crdTour.first + 1;
 	destinationTour.second = crdTour.second + 1;
 	echiquier.deplacerPiece(crdTour, destinationTour);
+	
+
+	//Test deplacment du cavalier
+	pair<int, int> destinationCavalier(3, 2);
+	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
+	crdCavalier = destinationCavalier;
+
+	destinationCavalier.first = 5;
+	destinationCavalier.second = 1;
+	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
+	crdCavalier = destinationCavalier;
+
+	destinationCavalier.first = 3;
+	destinationCavalier.second = 2;
+	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
+	crdCavalier = destinationCavalier;
+
+	destinationCavalier.first = 1;
+	destinationCavalier.second = 1;
+	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
+	crdCavalier = destinationCavalier;
+
+
+
 	echiquier.viderCase(crdTour);
 	echiquier.viderEchiquier();
 }
