@@ -13,7 +13,7 @@ void modele::Roi::verifierSurplusRoi() {
 		throw ErreurSurplusRoi("Il y a déjà 2 rois dans la partie ");
 	}
 }
-modele::Roi::Roi(string nature, string couleur) : piece(nature, couleur) {
+modele::Roi::Roi(string couleur) : piece("R", couleur) {
 	compteurInstances_++;
 	try
 	{

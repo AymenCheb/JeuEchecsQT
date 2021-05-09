@@ -8,6 +8,7 @@
 #include <QLabel>
 #pragma pop()
 
+
 // Cette classe représente la fenetre graphique de l'application
 namespace interfaceGraphique {
 
@@ -24,13 +25,16 @@ namespace interfaceGraphique {
 		void couleurCaseOriginale(int id);
 		void modifierBordureCase(int id);
 		void retirerBordureCase(int id);
+		void ajouterEchiquier(modele::Echiquier* nouvelEchiquier) { echiquierGraphique_.echiquiers.push_back(nouvelEchiquier); };
+		parties demanderPartie() { return echiquierGraphique_.verifierPartie();};
 	public slots:
-
+		
 	private:
 		template <typename T = decltype(nullptr)>
 		QPushButton* nouveauBouton(const QString& text, const T& slot = nullptr);
 		EchiquierGraphique echiquierGraphique_;
 		QLabel* affichage_;
 		QVector<QPushButton*> vecteursCases;
+		
 	};
 }

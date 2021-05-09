@@ -42,7 +42,7 @@ void testPartie1() {
 
 	// Creation d'une tour et test de deplacements
 	//Creation de la tour et positionnement de la tour aux coordonnees
-	modele::Tour nouvellePiece("T", "Noir");
+	modele::Tour nouvellePiece("Noir");
 	shared_ptr<modele::Tour> pointeurTour = make_shared<modele::Tour>(nouvellePiece);
 	cout << "On demande la modification de la case (5,4) en une tour: " << endl;
 	cout << '\n';
@@ -70,7 +70,7 @@ void testPartie1() {
 
 	//Creation d'un cavalier et test de deplacements
 	//Creation du cavalier et positionnement
-	modele::Cavalier premierCavalier("C", "Noir");
+	modele::Cavalier premierCavalier("Noir");
 	shared_ptr<modele::Cavalier> pointeurCavalier = make_shared<modele::Cavalier>(premierCavalier);
 	pair<int, int> coordonneesCavalier(5, 4);
 	echiquier.modifierCase(coordonneesCavalier, &pointeurCavalier);
@@ -100,7 +100,7 @@ void testPartie1() {
 
 	//Creation d'un roi et test de deplacements
 	//Creation du roi et positionnement
-	modele::Roi premierRoi("R", "Noir");
+	modele::Roi premierRoi("Noir");
 	shared_ptr<modele::Roi> pointeurRoi = make_shared<modele::Roi>(premierRoi);
 	pair<int, int> coordonneesRoi(2, 4);
 	echiquier.modifierCase(coordonneesRoi, &pointeurRoi);

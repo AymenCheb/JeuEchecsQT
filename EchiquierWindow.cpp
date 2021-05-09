@@ -43,6 +43,7 @@ interfaceGraphique::EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWin
 	// Cest indexs sont utiles pour placer les boutons
 	int indexLigne = 0;
 	int indexColonne= 0;
+	
 	for (int i : range(64)) {
 		auto buton = nouveauBouton(QString::number(i));
 		buton->setFlat(true);
@@ -60,6 +61,15 @@ interfaceGraphique::EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWin
 		{
 			indexColonne++;
 		}
+
+	}
+	string nomsButtons[3] = { "Partie 1", "Partie 2", "Lol" };
+	for (int i = 65; i < 68; i++)
+	{
+		auto buton = nouveauBouton(QString::number(i));
+		groupeBoutons->addButton(buton, i);
+		buton->setText(QString::fromStdString(nomsButtons[i-65]));
+		layout->addWidget(buton, 3, i+1);
 	}
 	// Cette portion du code provient est grandement inspir� de l'exemple de projet fournit par Fr Boyer sur moodle : 
 	#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)  // Le nom du signal idClicked existe depuis Qt 5.15

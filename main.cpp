@@ -49,6 +49,7 @@ void initialiserBibliothequeCours([[maybe_unused]] int argc, [[maybe_unused]] ch
 	//NOTE: C'est normal que la couverture de code dans l'Explorateur de tests de Visual Studio ne couvre pas la fin de cette fonction ni la fin du main après l'appel à cette fonction puisqu'il exécute uniquement les tests Google Test dans l'appel ci-dessus.
 }
 
+
 int main(int argc, char *argv[])
 {
 	bibliotheque_cours::VerifierFuitesAllocations verifierFuitesAllocations;
@@ -58,12 +59,13 @@ int main(int argc, char *argv[])
 	// Les lignes de codes suivantes s'occupe de créer les pièces de la partie: 
 	// Note: Les prochaines versions du projet auront une fonction pour se charger de ces étapes
 	modele::Echiquier echiquier;
-	modele::Roi roiNoir("R", "Noir");
-	modele::Roi roiBlanc("R", "Blanc");
-	modele::Roi roiKazakistan("R", "Bleu");
-	modele::Tour tourBlanche("T", "Blanc");
-	modele::Tour tourNoir("T", "Noir");
-	modele::Cavalier cavalierNoir("C", "Noir"), cavalierBlanc("C", "Blanc");
+	modele::Echiquier finQuadratique, finTriangulaire;
+	modele::Roi roiNoir("Noir");
+	modele::Roi roiBlanc("Blanc");
+	modele::Roi roiKazakistan("Bleu");
+	modele::Tour tourBlanche("Blanc");
+	modele::Tour tourNoir("Noir");
+	modele::Cavalier cavalierNoir("Noir"), cavalierBlanc("Blanc");
 	shared_ptr<modele::Roi> pointeurRoiNoir = make_shared<modele::Roi>(roiNoir);
 	shared_ptr<modele::Roi> pointeurRoiBlanc = make_shared<modele::Roi>(roiBlanc);
 	shared_ptr<modele::Tour> pointeurTourBlanche = make_shared<modele::Tour>(tourBlanche);
@@ -71,24 +73,56 @@ int main(int argc, char *argv[])
 	shared_ptr<modele::Cavalier> pointeurCavalierNoir = make_shared<modele::Cavalier>(cavalierNoir);
 	shared_ptr<modele::Cavalier> pointeurCavalierBlanc = make_shared<modele::Cavalier>(cavalierBlanc);
 	// Pour l'instant, nous commencons une partie dans un scénario de fin de jeu
-	pair<int, int> crdRoiNoir(7, 6), crdTourNoir(6, 6), crdTourBlance(0, 6), crdRoiBlanc(0,7), crdCavalierBlanc(4,4), crdCavalierNoir(3,4);
-	// Test de la vérification de la mise en échecs: 
-	
+	pair<int, int> crdRoiNoir, crdTourNoir, crdTourBlance, crdRoiBlanc, crdCavalierBlanc, crdCavalierNoir;
 
-	echiquier.afficherEchiquier();
 	interfaceGraphique::EchiquierWindow echiquierWindow;
+	echiquierWindow.ajouterEchiquier(&finTriangulaire);
+	echiquierWindow.ajouterEchiquier(&finQuadratique);
 	MediateurModeleVue mediateurModeleVue(&echiquierWindow);
 	echiquier.lierMediateur(&mediateurModeleVue);
+	finTriangulaire.lierMediateur(&mediateurModeleVue);
+	finQuadratique.lierMediateur(&mediateurModeleVue);
 	echiquierWindow.lierEchiquier(&echiquier);
 	
 	
+	// Il y a certainement des manières plus élégantes de réaliser cela, mais par soucis de simpliciter nous avons implémenté les différentes parties avec un switch des valeurs des coordonnées
+
+		crdRoiNoir = pair<int, int>(0, 0);
+		crdTourNoir = pair<int, int>(0, 1);
+		crdTourBlance = pair<int, int>(1, 0);
+		crdRoiBlanc = pair<int, int>(0, 2);
+		crdCavalierBlanc = pair<int, int>(5, 0);
+		crdCavalierNoir = pair<int, int>(0, 6);
+
+		finTriangulaire.placerPiece(crdRoiNoir, &pointeurRoiNoir);
+		finTriangulaire.placerPiece(crdTourBlance, &pointeurTourBlanche);
+		finTriangulaire.placerPiece(crdTourNoir, &pointeurTourNoir);
+
+		finTriangulaire.placerPiece(crdRoiBlanc, &pointeurRoiBlanc);
+		finTriangulaire.placerPiece(crdCavalierNoir, &pointeurCavalierNoir);
+		finTriangulaire.placerPiece(crdCavalierBlanc, &pointeurCavalierBlanc);
+
+		crdRoiNoir = pair<int, int>(5, 5);
+		crdTourNoir = pair<int, int>(7, 5);
+		crdTourBlance = pair<int, int>(6, 5);
+		crdRoiBlanc = pair<int, int>(5, 7);
+		crdCavalierBlanc = pair<int, int>(7, 7);
+		crdCavalierNoir = pair<int, int>(6, 6);
+
+		finQuadratique.placerPiece(crdRoiNoir, &pointeurRoiNoir);
+		finQuadratique.placerPiece(crdTourBlance, &pointeurTourBlanche);
+		finQuadratique.placerPiece(crdTourNoir, &pointeurTourNoir);
+
+		finQuadratique.placerPiece(crdRoiBlanc, &pointeurRoiBlanc);
+		finQuadratique.placerPiece(crdCavalierNoir, &pointeurCavalierNoir);
+		finQuadratique.placerPiece(crdCavalierBlanc, &pointeurCavalierBlanc);
+	// Test de la vérification de la mise en échecs: 
+	
+
+	
+	
+	
 	// On place les pièces initialisées au début une fois que la fenêtre est lancée 
-	echiquier.placerPiece(crdRoiNoir, &pointeurRoiNoir);
-	echiquier.placerPiece(crdTourBlance, &pointeurTourBlanche);
-	echiquier.placerPiece(crdTourNoir, &pointeurTourNoir);
-	echiquier.placerPiece(crdRoiBlanc, &pointeurRoiBlanc);
-	echiquier.placerPiece(crdCavalierNoir, &pointeurCavalierNoir);
-	echiquier.placerPiece(crdCavalierBlanc, &pointeurCavalierBlanc);
 	echiquierWindow.setWindowState(Qt::WindowMaximized);
 	echiquierWindow.show();
 	return app.exec();

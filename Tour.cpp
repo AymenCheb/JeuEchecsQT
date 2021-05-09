@@ -6,7 +6,7 @@
 using namespace std;
 
 //Constructeur des tours
-modele::Tour::Tour(string nature, string couleur) : piece(nature, couleur) {
+modele::Tour::Tour(string couleur) : piece("T", couleur) {
 }
 
 bool modele::Tour::demanderMouvement(const std::pair<int, int> depart, const pair<int, int> destination) {

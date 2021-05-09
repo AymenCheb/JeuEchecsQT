@@ -6,7 +6,7 @@
 using namespace std;
 
 //Constructeur des cavaliers
-modele::Cavalier::Cavalier(string nature, string couleur) : piece(nature, couleur) {
+modele::Cavalier::Cavalier(string couleur) : piece("C", couleur) {
 }
 
 bool modele::Cavalier::demanderMouvement(const std::pair<int, int> depart, const pair<int, int> destination) {
