@@ -240,8 +240,11 @@ void modele::Echiquier::memoriserPiece(shared_ptr<piece>& pieceDeplacee) {
 }
 // Fonction faisant appel au médiateur ModeleVue pour mettre à jour l'interface graphique
 void modele::Echiquier::miseAjourGraphique(pair<int, int> coordonnesCase) {
-	mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_,
-		tableau_[coordonnesCase.first][coordonnesCase.second].get()->couleur_);
+	if (affichable_)
+	{
+		mediateur_->notifierWindow(coordonnesCase, tableau_[coordonnesCase.first][coordonnesCase.second].get()->nature_,
+			tableau_[coordonnesCase.first][coordonnesCase.second].get()->couleur_);
+	}
 };
 
 void modele::Echiquier::contour(pair<int, int> coordonneesInitiales) {
