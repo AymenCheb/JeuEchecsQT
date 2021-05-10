@@ -61,7 +61,6 @@ namespace modele{
 		template <class TypePiece>
 		void placerPiece(pair<int, int> caseInitial, shared_ptr<TypePiece>* pieceAplacer) {
 			modifierCase(caseInitial, pieceAplacer);
-			//miseAjourGraphique(caseInitial);
 		};
 		
 		void reAffichageGraphique();

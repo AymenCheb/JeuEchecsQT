@@ -63,7 +63,8 @@ interfaceGraphique::EchiquierWindow::EchiquierWindow(QWidget* parent) : QMainWin
 		}
 
 	}
-	string nomsButtons[3] = { "Partie 1", "Partie 2", "Lol" };
+	// Noms des parties
+	string nomsButtons[3] = { "Fin triangulaire", "Fin Quadratique", "Fin Nulle" };
 	for (int i = 65; i < 68; i++)
 	{
 		auto buton = nouveauBouton(QString::number(i));

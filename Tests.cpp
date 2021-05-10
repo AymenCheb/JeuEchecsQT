@@ -15,6 +15,8 @@ using namespace std;
 
 
 void testModele(modele::Echiquier& echiquier) {
+	// Les tests suivants visent à tester les foncitons du modèle:
+
 	string sepratation = " \n --------------------------------------------------------------- \n";
 	cout << "Tableau initial" << endl;
 	cout << '\n';
@@ -22,6 +24,7 @@ void testModele(modele::Echiquier& echiquier) {
 	cout << sepratation;
 	cout << '\n';
 	pair<int, int> nouvelleCoordonnees, coordonneesInitiales;
+	echiquier.reAffichageGraphique();
 	// Test: déplacer une case vide 
 	nouvelleCoordonnees.first = 7;
 	nouvelleCoordonnees.second = 7;
@@ -34,6 +37,7 @@ void testModele(modele::Echiquier& echiquier) {
 	echiquier.afficherEchiquier();
 	cout << sepratation;
 	cout << '\n';
+	// Test: déplacer une case sur elle même
 	echiquier.deplacerPiece(coordonneesInitiales, coordonneesInitiales);
 	// Test trouver chemin piece vide: 
 	modele::piece unePiece; 
@@ -42,20 +46,28 @@ void testModele(modele::Echiquier& echiquier) {
 	echiquier.contour(coordonneesInitiales);
 	// Tests déplacement de pièces: 
 	// Test du nombre limite de rois:
+	// 
+	// Préparation de pièces pour tester
 	modele::Roi roiNoir("Noir");
 	modele::Roi roiBlanc("Blanc");
 	modele::Roi roiKazakistan("Bleu"); // On tente de créer un 3ème roi
 	modele::Tour tourNoir("Noir");
 	modele::Cavalier cavalierNoir("Noir");
+
 	shared_ptr<modele::Roi> pointeurRoiNoir = make_shared<modele::Roi>(roiNoir);
 	shared_ptr<modele::Tour> pointeurTourNoir = make_shared<modele::Tour>(tourNoir);
 	shared_ptr<modele::Cavalier> pointeurCavalierNoir = make_shared<modele::Cavalier>(cavalierNoir);
+
 	pair<int, int> crdTour(1, 0), crdCavalier(1, 1), crdRoi(0, 0);
+
+	// Placement des pièces sur l'échiquier:
 	echiquier.modifierCase(crdTour, &pointeurTourNoir);
 	echiquier.modifierCase(crdRoi, &pointeurRoiNoir);
 	echiquier.modifierCase(crdCavalier, &pointeurCavalierNoir);
+
 	echiquier.afficherEchiquier();
-	// Tests déplacements de la tour
+
+	// Tests déplacements de la tour:
 	// Deplacement tour vers le bas
 	pair<int, int> destinationTour(5, 0);
 	echiquier.deplacerPiece(crdTour, destinationTour);
@@ -69,6 +81,7 @@ void testModele(modele::Echiquier& echiquier) {
 	destinationTour.first = 4;
 	destinationTour.second = crdTour.second;
 	echiquier.deplacerPiece(crdTour, destinationTour);
+
 	// Test deplacement illegal: 
 	crdTour = destinationTour; 
 	destinationTour.first = crdTour.first + 1;
@@ -122,8 +135,12 @@ void testModele(modele::Echiquier& echiquier) {
 	destinationTour.second = 4; 
 	echiquier.deplacerPiece(crdTour, destinationTour);
 
-
+	destinationTour.first = 4;
+	destinationTour.second = 1;
+	echiquier.deplacerPiece(crdTour, destinationTour);
 	echiquier.afficherMembresEquipe("Equipe noire");
+
+	// Test des fonctions pour vider des cases
 	echiquier.viderCase(crdTour);
 	echiquier.viderEchiquier();
 }

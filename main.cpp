@@ -56,12 +56,11 @@ int main(int argc, char *argv[])
 	QApplication app(argc, argv);
 	initialiserBibliothequeCours(argc, argv);
 
-	// Les lignes de codes suivantes s'occupe de créer les pièces de la partie: 
-	// Note: Les prochaines versions du projet auront une fonction pour se charger de ces étapes
+	// Initialisation des échiquiers
 	
-	modele::Echiquier echiquier;
-	echiquier.prevenirAffichage();
-	modele::Echiquier finQuadratique, finTriangulaire;
+	modele::Echiquier echiquierTest;
+	echiquierTest.prevenirAffichage();
+	modele::Echiquier finQuadratique, finTriangulaire, finNulle;
 
 	// Pour l'instant, nous commencons une partie dans un scénario de fin de jeu
 	pair<int, int> crdRoiNoir, crdTourNoir, crdTourBlance, crdRoiBlanc, crdCavalierBlanc, crdCavalierNoir;
@@ -69,14 +68,17 @@ int main(int argc, char *argv[])
 	interfaceGraphique::EchiquierWindow echiquierWindow;
 	echiquierWindow.ajouterEchiquier(&finTriangulaire);
 	echiquierWindow.ajouterEchiquier(&finQuadratique);
+	echiquierWindow.ajouterEchiquier(&finNulle);
 	MediateurModeleVue mediateurModeleVue(&echiquierWindow);
 	
-	echiquier.lierMediateur(&mediateurModeleVue);
+	echiquierTest.lierMediateur(&mediateurModeleVue);
 	finTriangulaire.lierMediateur(&mediateurModeleVue);
 	finQuadratique.lierMediateur(&mediateurModeleVue);
-	echiquierWindow.lierEchiquier(&echiquier);
-	testModele(echiquier);
+	finNulle.lierMediateur(&mediateurModeleVue);
+	echiquierWindow.lierEchiquier(&echiquierTest);
+	testModele(echiquierTest);
 	
+	// Initialisation des pièces
 	modele::Roi roiNoir("Noir");
 	modele::Roi roiBlanc("Blanc");
 	modele::Tour tourBlanche("Blanc");
@@ -89,8 +91,10 @@ int main(int argc, char *argv[])
 	shared_ptr<modele::Cavalier> pointeurCavalierNoir = make_shared<modele::Cavalier>(cavalierNoir);
 	shared_ptr<modele::Cavalier> pointeurCavalierBlanc = make_shared<modele::Cavalier>(cavalierBlanc);
 	
-	// Il y a certainement des manières plus élégantes de réaliser cela, mais par soucis de simpliciter nous avons implémenté les différentes parties avec un switch des valeurs des coordonnées
+	// Il y a certainement des manières plus élégantes de réaliser cela, mais par soucis de simpliciter nous avons implémenté les différentes parties comme différents échequiers
+	// Cette méthode a l'avantage que l'on peut passer d'une partie à une autre en cours d'éxecution
 
+		// Placement Triangulaire
 		crdRoiNoir = pair<int, int>(0, 0);
 		crdTourNoir = pair<int, int>(0, 1);
 		crdTourBlance = pair<int, int>(1, 0);
@@ -106,6 +110,7 @@ int main(int argc, char *argv[])
 		finTriangulaire.placerPiece(crdCavalierNoir, &pointeurCavalierNoir);
 		finTriangulaire.placerPiece(crdCavalierBlanc, &pointeurCavalierBlanc);
 
+		// Placements quadratiques
 		crdRoiNoir = pair<int, int>(5, 5);
 		crdTourNoir = pair<int, int>(7, 5);
 		crdTourBlance = pair<int, int>(6, 5);
@@ -116,11 +121,13 @@ int main(int argc, char *argv[])
 		finQuadratique.placerPiece(crdRoiNoir, &pointeurRoiNoir);
 		finQuadratique.placerPiece(crdTourBlance, &pointeurTourBlanche);
 		finQuadratique.placerPiece(crdTourNoir, &pointeurTourNoir);
-
 		finQuadratique.placerPiece(crdRoiBlanc, &pointeurRoiBlanc);
 		finQuadratique.placerPiece(crdCavalierNoir, &pointeurCavalierNoir);
 		finQuadratique.placerPiece(crdCavalierBlanc, &pointeurCavalierBlanc);
-	// Test de la vérification de la mise en échecs: 
+	
+		// Placements nulle
+		finNulle.placerPiece(crdRoiBlanc, &pointeurRoiBlanc);
+		finNulle.placerPiece(crdRoiNoir, &pointeurRoiNoir);
 	
 
 	
