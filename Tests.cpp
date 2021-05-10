@@ -89,7 +89,9 @@ void testModele(modele::Echiquier& echiquier) {
 	echiquier.deplacerPiece(crdTour, destinationTour);
 	
 
-	//Test deplacment du cavalier
+	//Test deplacement legaux du cavalier dans differentes directions
+
+	//Test de depalcement vers le bas
 	pair<int, int> destinationCavalier(3, 2);
 	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
 	crdCavalier = destinationCavalier;
@@ -99,11 +101,13 @@ void testModele(modele::Echiquier& echiquier) {
 	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
 	crdCavalier = destinationCavalier;
 
+	//Test de deplacement vers le haut
 	destinationCavalier.first = 4;
 	destinationCavalier.second = 3;
 	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
 	crdCavalier = destinationCavalier;
 
+	//Test de deplacement illegaux du cavalier
 	destinationCavalier.first = 1;
 	destinationCavalier.second = 1;
 	echiquier.deplacerPiece(crdCavalier, destinationCavalier);
